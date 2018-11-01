@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS adstodQuestions;
+CREATE DATABASE adstodQuestions;
+
+USE adstodQuestions;
+
+CREATE TABLE Questions(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  QuestionText VARCHAR(255),
+  OptionCount INT(2),
+  Options VARCHAR(255)
+);
+
+CREATE TABLE AnswerSets(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  AnswerOptionSet TEXT
+);
+
+CREATE TABLE PhoneNumbers(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  Number VARCHAR(11)
+);
+
+CREATE TABLE AssistanceResources(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  ResourceName VARCHAR(255),
+  Link TEXT,
+  PhoneNumberID BIGINT(20),
+  CONSTRAINT FOREIGN KEY (PhoneNumberID) REFERENCES PhoneNumbers(ID)
+);
+
+CREATE TABLE Results(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  ResultTitle VARCHAR(255),
+  AnswerSetID BIGINT(20),
+  CONSTRAINT FOREIGN KEY (AnswerSetID) REFERENCES AnswerSets(ID)
+);
+
+CREATE TABLE ResourcesForResults(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  ResultID BIGINT(20),
+  AssistanceResourceID BIGINT(20),
+  CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID),
+  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
+);
