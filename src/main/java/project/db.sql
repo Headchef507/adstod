@@ -6,8 +6,12 @@ USE adstodQuestions;
 CREATE TABLE Questions(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   QuestionText VARCHAR(255),
-  OptionCount INT(2),
-  Options VARCHAR(255)
+  OptionCount INT(2)
+);
+
+CREATE TABLE Options(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  OptionText VARCHAR(255)
 );
 
 CREATE TABLE AnswerSets(
@@ -41,4 +45,12 @@ CREATE TABLE ResourcesForResults(
   AssistanceResourceID BIGINT(20),
   CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID),
   CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
+);
+
+CREATE TABLE OptionsForAnswers(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  QuestionID BIGINT(20),
+  OptionID BIGINT(20),
+  CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES Questions(ID),
+  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES Options(ID)
 );
