@@ -27,7 +27,7 @@ public class Question {
     //PostitNote used an empty constructor, because we need to be able to create an empty PostitNote to add
     //to our model so we can use it with our form
     public Question() {
-
+        //We need and empty Question in the beginning
     }
     public Question(String question, String[] answerOptions, String answer){
         this.question = question;
@@ -37,7 +37,28 @@ public class Question {
     }
     //PostitNote þá var id Long heldur en int, athuga það!!
     public int getId() { return id; }
+
+    public void setId() { this.id = id; }
+
+    public String getAnswer(){ return answer; }
+
+    public void setAnswer(String answer){ this.answer = answer; }
+
+    public String getQuestion() { return question; }
+
+    public void setQuestion(String question) { this.question = question; }
+
+    public String[] getAnswerOptions() { return answerOptions; }
+
+    public void setAnswerOptions(String[] answerOptions) { this.answerOptions = answerOptions; }
+
+    //This is for easier debug in PostitNote
     /*
-    Vantar fleiri getters og setters
-     */
+    @Override
+    public String toString(){
+        return String.format(
+               "Postit Note[name=%s, note=%s]",
+                name,note);
+    }
+    */
 }

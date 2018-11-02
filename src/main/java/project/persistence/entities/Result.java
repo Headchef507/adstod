@@ -25,9 +25,26 @@ public class Result {
         this.title = title;
     }
 
+    public int getId() { return id; }
 
+    public void setId(int id) { this.id = id; }
+
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
+
+    public AssistanceResource[] getAssistanceResource() { return assistanceResource; }
+
+    public void setAssistanceResource(AssistanceResource[] assistanceResource) { this.assistanceResource = assistanceResource; }
+
+    //This is for easier debug in PostitNote
     /*
-    Vantar fleira!!
-     */
+    @Override
+    public String toString(){
+        return String.format(
+               "Postit Note[name=%s, note=%s]",
+                name,note);
+    }
+    */
 
 }
