@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Iterator;
 /*
 The class that each question and there multiple answers.
  */
@@ -13,7 +14,7 @@ The class that each question and there multiple answers.
 * @Table(name = "postitnote") // If you want to specify a table name, you can do so here
 * Í PostitNote þá var valmöguleikinn að setja þetta upp sem töflu
  */
-public class Question {
+public class Question implements Iterator<Question> {
 
     // Declares that this attribute is the id (primary key
     @Id
@@ -23,6 +24,7 @@ public class Question {
     private String question;
     private String[] answerOptions;
     private String answer;
+    private String language;
 
     //PostitNote used an empty constructor, because we need to be able to create an empty PostitNote to add
     //to our model so we can use it with our form
@@ -51,6 +53,25 @@ public class Question {
     public String[] getAnswerOptions() { return answerOptions; }
 
     public void setAnswerOptions(String[] answerOptions) { this.answerOptions = answerOptions; }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    //The following hasNext og Next eru til að ítra yfir allar spurningarnar
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public Question next() {
+        return null;
+    }
 
     //This is for easier debug in PostitNote
     /*
