@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
+    List<Question> answers = null;
+
     void saveAnswers(List<Question> answers);
 
     List<Result> getResults(List<Question> answers);
