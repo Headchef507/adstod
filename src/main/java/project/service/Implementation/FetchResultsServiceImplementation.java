@@ -26,4 +26,5 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     public List<Result> getResults(List<Question> answers) { return this.repository.getResults(answers); }
 
 
+
 }
