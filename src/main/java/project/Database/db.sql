@@ -9,57 +9,57 @@ USE adstodQuestions;                      # Make sure to indicate what database 
 
 CREATE TABLE QuestionsICE(                   # Table holding all questions in icelandic
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionText VARCHAR(255),
-  OptionCount INT(2)
+  QuestionText VARCHAR(255) NOT NULL,
+  OptionCount INT(2) NOT NULL
 );
 
 CREATE TABLE QuestionsENG(                   # Table holding all questions in english
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionText VARCHAR(255),
-  OptionCount INT(2)
+  QuestionText VARCHAR(255) NOT NULL,
+  OptionCount INT(2) NOT NULL
 );
 
 CREATE TABLE QuestionsPOL(                   # Table holding all questions in polish
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionText VARCHAR(255),
-  OptionCount INT(2)
+  QuestionText VARCHAR(255) NOT NULL,
+  OptionCount INT(2) NOT NULL
 );
 
 CREATE TABLE OptionsICE(                     # Table holding all possible answers to questions
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  OptionText VARCHAR(255)
+  OptionText VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE OptionsENG(                     # Table holding all possible answers to questions
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  OptionText VARCHAR(255)
+  OptionText VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE OptionsPOL(                     # Table holding all possible answers to questions
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  OptionText VARCHAR(255)
+  OptionText VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE AnswerSets(                  # Table holding all answer sets possible for matching with results
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  AnswerOptionSet TEXT
+  AnswerOptionSet TEXT NOT NULL
 );
 
 CREATE TABLE PhoneNumbers(                # Table holding phone numbers for all assistance resources
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  Number VARCHAR(11)
+  Number VARCHAR(11) NOT NULL
 );
 
 CREATE TABLE AssistanceResources(         # Table holding names and links of all assistance resources that can pop up in results
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResourceName VARCHAR(255),
-  Link TEXT
+  ResourceName VARCHAR(255) NOT NULL,
+  Link TEXT NOT NULL
 );
 
 CREATE TABLE Results(                   # Table holding all possible results from answer sets
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResultTitle VARCHAR(255),
-  AnswerSetID BIGINT(20),
+  ResultTitle VARCHAR(255) NOT NULL,
+  AnswerSetID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (AnswerSetID) REFERENCES AnswerSets(ID)
 );
 
@@ -71,8 +71,8 @@ CREATE TABLE Results(                   # Table holding all possible results fro
  */
 CREATE TABLE PhoneNumbersForResources(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  PhoneNumberID BIGINT(20),
-  AssistanceResourceID BIGINT(20),
+  PhoneNumberID BIGINT(20) NOT NULL,
+  AssistanceResourceID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (PhoneNumberID) REFERENCES PhoneNumbers(ID),
   CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
 );
@@ -85,8 +85,8 @@ CREATE TABLE PhoneNumbersForResources(
  */
 CREATE TABLE ResourcesForResults(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResultID BIGINT(20),
-  AssistanceResourceID BIGINT(20),
+  ResultID BIGINT(20) NOT NULL,
+  AssistanceResourceID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID),
   CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
 );
@@ -99,28 +99,33 @@ CREATE TABLE ResourcesForResults(
  */
 CREATE TABLE OptionsForAnswersICE(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionID BIGINT(20),
-  OptionID BIGINT(20),
+  QuestionID BIGINT(20) NOT NULL,
+  OptionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsICE(ID),
-  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsICE(ID)
+  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsICE(ID),
+  CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsICE(ID)
 );
 
 CREATE TABLE OptionsForAnswersENG(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionID BIGINT(20),
-  OptionID BIGINT(20),
+  QuestionID BIGINT(20) NOT NULL,
+  OptionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsENG(ID),
-  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsENG(ID)
+  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsENG(ID),
+  CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsENG(ID)
 );
 
 CREATE TABLE OptionsForAnswersPOL(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  QuestionID BIGINT(20),
-  OptionID BIGINT(20),
+  QuestionID BIGINT(20) NOT NULL,
+  OptionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsPOL(ID),
-  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsPOL(ID)
+  CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsPOL(ID),
+  CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsPOL(ID)
 );
-
 
 -- Inserts
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Kyn?", 3);
@@ -163,8 +168,8 @@ INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
 
-INSERT INTO OptionsForAnswersICE (QuestionID, OptionID) VALUES (1, 1);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
 
-INSERT INTO OptionsForAnswersENG (QuestionID, OptionID) VALUES (1, 1);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
 
-INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (1, 1);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
