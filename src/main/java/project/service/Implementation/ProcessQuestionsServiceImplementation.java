@@ -19,9 +19,10 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     @Override
     public void processAnswers(List<Question> answers) {
-        for (Iterator<Question> i: answers) {
-
-            if(question.getId() == 3); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
+        int i = 0; //telur upp hver object
+        while(i < answers.size()){
+            this.question = answers.get(i);
+            if(question.getId() == 1 || question.getId() == 2); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
         }
 
     }
