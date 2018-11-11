@@ -28,18 +28,23 @@ public class AssistanceResource {
         this.phNumbers = phNumbers;
     }
 
+    //Getter and setter for the Id of the Assistance resource
+    //depending on how the Question entity has been processed, the program picks the right AsstianceResource
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
 
+    //the title is the name of institution the User can turn to for help.
     public String getTitle() { return title; }
 
     public void setTitle(String title) { this.title = title; }
 
+    //the link to said institution (if it is available)
     public String getLink() { return link; }
 
     public void setLink(String link) { this.link = link; }
 
+    //Several phone numbers of the institution and it´s employees (if it is provided)
     public String[] getPhNumbers() { return phNumbers; }
 
     public void setPhNumbers(String[] phNumbers) { this.phNumbers = phNumbers; }

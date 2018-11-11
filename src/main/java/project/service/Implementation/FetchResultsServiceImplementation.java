@@ -15,6 +15,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     // Instance Variables
     private QuestionRepository repository;
 
+    //This is the constructor
     // Dependency Injection
     @Autowired
     public FetchResultsServiceImplementation(QuestionRepository repository) {
@@ -22,6 +23,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     }
 
 /*
+    This is where we get the object called Result, see the Entity Result for more information.
     @Override
     public List<Result> getResults(List<Question> answers) { return this.repository.getResults(answers); }
 */

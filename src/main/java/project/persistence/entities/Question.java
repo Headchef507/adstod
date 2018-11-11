@@ -38,18 +38,28 @@ public class Question implements Iterator<Question> {
 
     }
     //PostitNote þá var id Long heldur en int, athuga það!!
+
+
+    //the id of each question
     public int getId() { return id; }
 
     public void setId() { this.id = id; }
 
+
+    //this is where the answer the User picks best fits him or her.
     public String getAnswer(){ return answer; }
 
     public void setAnswer(String answer){ this.answer = answer; }
 
+    //the question for the User. For example: question == "What is your sex?"
     public String getQuestion() { return question; }
 
     public void setQuestion(String question) { this.question = question; }
 
+
+   //These are the users answer options
+    //Some range from: "I strongly agree" to "I strongly disagree"
+    //others are simple yes and no questions.
     public String[] getAnswerOptions() { return answerOptions; }
 
     public void setAnswerOptions(String[] answerOptions) { this.answerOptions = answerOptions; }

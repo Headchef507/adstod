@@ -17,6 +17,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     QuestionRepository repository;
 
 /*
+    //The answer given will be saved in the entity Question.
     @Override
     public void saveAnswers(List<Question> answers, String theAnswer) { //return repository.save(answers);
         question.setAnswer(theAnswer);
@@ -24,7 +25,10 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
 
     }
-
+    //After the User answers a question, the answer will processed here.
+    //Depending on the id of the question, depends on how it will be processed.
+    //Some questions have only two answer options and others several.
+    //Depending on those, the User will recieve fewer questions.
     @Override
     public void processAnswers(List<Question> answers) {
         int i = 0; //telur upp hver object
@@ -36,6 +40,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     }
 */
     @Override
+    //This is where get the next question to be used.
     public List<Question> getQuestionsById(int id) {
         List<Question> questions = new List<Question>() {
             @Override

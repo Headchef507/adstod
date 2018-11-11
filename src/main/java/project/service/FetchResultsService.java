@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface FetchResultsService {
 
+    //Information in corresponding implementation (FetchResultsServiceImplementation)
+
     //List<Result> getResults(List<Question> answers);
 
 }
