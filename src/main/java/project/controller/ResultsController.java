@@ -27,7 +27,7 @@ public class ResultsController {
 
     }
 
-    @RequestMapping (value = "/result", method = RequestMethod.GET)
+    //@RequestMapping (value = "/result", method = RequestMethod.GET)
     public List<Result> getOtherPossibleResults(List<Question> answers) {
         return null;
     }

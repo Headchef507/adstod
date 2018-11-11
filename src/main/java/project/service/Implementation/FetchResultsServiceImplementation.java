@@ -21,10 +21,10 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         this.repository = repository;
     }
 
-
+/*
     @Override
     public List<Result> getResults(List<Question> answers) { return this.repository.getResults(answers); }
-
+*/
 
 
 }

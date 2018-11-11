@@ -16,6 +16,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     Question question = new Question();//bætti við þessu til að vinna í processAnswers
     QuestionRepository repository;
 
+/*
     @Override
     public void saveAnswers(List<Question> answers, String theAnswer) { //return repository.save(answers);
         question.setAnswer(theAnswer);
@@ -33,7 +34,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         }
 
     }
-
+*/
     @Override
     public List<Question> getQuestionsById(int id) {
         List<Question> questions = new List<Question>() {
@@ -152,7 +153,8 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
                 return null;
             }
         };
-        repository.getQuestionsById(0);
+        long i = 1;
+        repository.findOne(i);
 
         return questions;
     }

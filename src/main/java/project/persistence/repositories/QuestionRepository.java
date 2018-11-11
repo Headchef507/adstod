@@ -1,6 +1,8 @@
 package project.persistence.repositories;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import project.persistence.entities.Question;
 import project.persistence.entities.Result;
 
@@ -16,7 +18,8 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     //List<Result> getResults(List<Question> answers);
 
-    List<Question> findOne(int i);
+    @Query(value = "SELECT q FROM Question q WHERE q.id = ?1")
+    Question findOne(Long i);
 
     //void processAnswers(List<Question> answers);
 

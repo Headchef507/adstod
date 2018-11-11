@@ -16,7 +16,7 @@ public class StatusController {
     @Autowired
     public StatusController(ProcessQuestionsService processQuestionsService) { this.processQuestionsService = processQuestionsService; }
 
-    @RequestMapping
+    //@RequestMapping
     public int getStatusBasedOnAnswers(List<Question> answers) {
         return 0;
     }

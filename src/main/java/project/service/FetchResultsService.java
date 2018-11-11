@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface FetchResultsService {
 
-    List<Result> getResults(List<Question> answers);
+    //List<Result> getResults(List<Question> answers);
 
 }
