@@ -128,46 +128,58 @@ CREATE TABLE OptionsForAnswersPOL(
 );
 
 -- Inserts
+-- Inserting 1 question in every language
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Kyn?", 3);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Gender?", 3);
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER?", 3);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER?", 3); -- Polish translation needed
 
+-- Inserting all options for 1 question in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Kvenkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Annað");
 
+-- Inserting all options for 1 question in english
 INSERT INTO OptionsENG (OptionText) VALUES ("Male");
 INSERT INTO OptionsENG (OptionText) VALUES ("Female");
 INSERT INTO OptionsENG (OptionText) VALUES ("Other");
 
+-- Inserting all options for 1 question in polish
+-- Translation needed
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHMale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHFemale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHOther");
 
+-- Inserting all possible answer sets
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("1");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("2");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("3");
 
+-- Inserting phone numbers for assistance resources
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545465645");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545656565");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545555555");
 
+-- Inserting assistance resources
 INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Addi-kun", "addikun.is");
 INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Atli-chan", "atlichan.com");
 INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Tommi-san", "tommisan.po");
 
+-- Inserting results
 INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Male gender", 1);
 INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Female gender", 2);
 INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Other gender", 3);
 
+-- Connecting phone numbers to assistance resources
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (3, 3);
 
+-- Connecting assistance resources to results
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
 
+-- Connecting the questions to options and the next question in line
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
 
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
