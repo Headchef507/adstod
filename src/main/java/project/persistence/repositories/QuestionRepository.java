@@ -14,7 +14,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     List<Result> getResults(List<Question> answers);
 
-    List<Question> getQuestionsById(int[] id);
+    List<Question> getQuestionsById(int i);
 
     void processAnswers(List<Question> answers);
 

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ProcessQuestionsService {
 
-    void saveAnswers(List<Question> answers);
+    void saveAnswers(List<Question> answers, String theAnswer);
 
     void processAnswers(List<Question> answers);
 
-    List<Question> getQuestions(int[] id);
+    List<Question> getQuestionsById(int i);
 }
