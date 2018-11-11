@@ -14,10 +14,10 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     //void saveAnswers(List<Question> answers);
 
-    List<Result> getResults(List<Question> answers);
+    //List<Result> getResults(List<Question> answers);
 
-    List<Question> findBy(int i);
+    List<Question> findOne(int i);
 
-    void processAnswers(List<Question> answers);
+    //void processAnswers(List<Question> answers);
 
 }
