@@ -8,13 +8,15 @@ import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
+//https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/query/QueryByExampleExecutor.html?is-external=true#findOne-org.springframework.data.domain.Example-
+
     List<Question> answers = null;
 
-    void saveAnswers(List<Question> answers);
+    //void saveAnswers(List<Question> answers);
 
     List<Result> getResults(List<Question> answers);
 
-    List<Question> getQuestionsById(int i);
+    List<Question> findBy(int i);
 
     void processAnswers(List<Question> answers);
 
