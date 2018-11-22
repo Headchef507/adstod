@@ -1,9 +1,6 @@
 package project.persistence.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Iterator;
 /*
 The class that each question and there multiple answers.
@@ -14,12 +11,17 @@ The class that each question and there multiple answers.
 * @Table(name = "postitnote") // If you want to specify a table name, you can do so here
 * Í PostitNote þá var valmöguleikinn að setja þetta upp sem töflu
  */
+@Table(name = "questionsice")
+@SecondaryTables({
+        @SecondaryTable(name="questionseng"),
+        @SecondaryTable(name="questionspol")
+})
 public class Question implements Iterator<Question> {
 
     // Declares that this attribute is the id (primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String question;
     private String[] answerOptions;
@@ -41,9 +43,9 @@ public class Question implements Iterator<Question> {
 
 
     //the id of each question
-    public int getId() { return id; }
+    public long getId() { return id; }
 
-    public void setId() { this.id = id; }
+    public void setId(long id) { this.id = id; }
 
 
     //this is where the answer the User picks best fits him or her.

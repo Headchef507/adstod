@@ -52,7 +52,7 @@ CREATE TABLE PhoneNumbers(                # Table holding phone numbers for all 
 
 CREATE TABLE AssistanceResources(         # Table holding names and links of all assistance resources that can pop up in results
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResourceName VARCHAR(255) NOT NULL,
+  Title VARCHAR(255) NOT NULL,
   Link TEXT NOT NULL
 );
 
@@ -160,9 +160,9 @@ INSERT INTO PhoneNumbers(Number) VALUES ("+3545656565");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545555555");
 
 -- Inserting assistance resources
-INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Addi-kun", "addikun.is");
-INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Atli-chan", "atlichan.com");
-INSERT INTO AssistanceResources(ResourceName, Link) VALUES ("Tommi-san", "tommisan.po");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Addi-kun", "addikun.is");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
 
 -- Inserting results
 INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Male gender", 1);
@@ -179,9 +179,10 @@ INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
 
+
 -- Connecting the questions to options and the next question in line
-INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
 
-INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
 
-INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 0);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);

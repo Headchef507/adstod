@@ -1,18 +1,15 @@
 package project.persistence.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-//@Table(name = "postitnote") // If you want to specify a table name, you can do so here
+@Table(name = "results") // If you want to specify a table name, you can do so here
 public class Result {
 
     //Initializing variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String title;
     private AssistanceResource[] assistanceResource;
@@ -30,9 +27,9 @@ public class Result {
 
     // Getters and setters
     // ID of result in database
-    public int getId() { return id; }
+    public long getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
 
     // Title of result in database
     public String getTitle() { return title; }
