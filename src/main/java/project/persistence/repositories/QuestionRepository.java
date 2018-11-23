@@ -4,6 +4,8 @@ package project.persistence.repositories;
 import java.util.ArrayList;
 import java.util.List;
 import project.persistence.entities.Question;
+import project.persistence.entities.Result;
+
 import java.sql.*;
 
 import javax.persistence.*;
@@ -15,6 +17,7 @@ public class QuestionRepository {
      * and the latest fetched question that the user is answering at the time
      */
     List<Question> answers = null;
+    List<Result> results = null;
     private Connection conn = null;
     private String url = "jdbc::mysql://localhost:3306/adstodQuestions";
 
@@ -36,13 +39,25 @@ public class QuestionRepository {
      * makes into the answers List above
      * Incomplete
      */
-    //void saveAnswers(List<Question> answers);
+    public void saveAnswers(Question answer){
+        this.answers.add(answer);
+
+    }
 
     /**
      * Function getResults was/is intended to take the answers at the end
      * and match them in the database to get a result/s for the user
      */
-    //List<Result> getResults(List<Question> answers);
+    //What Reults we want depends on the FetchReultsService
+    public List<Result> getResults() {
+        return this.results;
+    }
+
+    //The function sends into FetchResults the list of questions with their answers
+    //so it is possible to work with it
+    public List<Question> getAnswers(){
+        return this.answers;
+    }
 
     /**
      * Basic query made to inject into function findOne
