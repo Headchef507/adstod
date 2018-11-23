@@ -1,23 +1,35 @@
 package project.persistence.repositories;
 
 // Imports needed
+import java.util.ArrayList;
 import java.util.List;
 import project.persistence.entities.Question;
+import java.sql.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 public class QuestionRepository {
-
-//https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/query/QueryByExampleExecutor.html?is-external=true#findOne-org.springframework.data.domain.Example-
 
     /**
      * List of all questions that the user has answered
      * and the latest fetched question that the user is answering at the time
      */
     List<Question> answers = null;
-    EntityManagerFactory emf;
+    private Connection conn = null;
+    private String url = "jdbc::mysql://localhost:3306/adstodQuestions";
+
+    public void QuestionRepository(){
+        System.out.println("x");
+        /*try{
+            conn = DriverManager.getConnection(url);
+            System.out.println("null");
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }*/
+    }
 
     /**
      * Function saveAnswers was/is intended to save an answer that the user
@@ -38,11 +50,27 @@ public class QuestionRepository {
      * Made now to get the program running
      */
     //@Query(value = "SELECT * FROM QuestionsICE q WHERE q.id = ?1", nativeQuery = true)
-    public Question findOne(Long i){
-        EntityManager em = emf.createEntityManager();
-        Query que = em.createNativeQuery("SELECT * FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = 1;");
-        
+    public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection(url);
+        System.out.println("Got here");
+        String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        System.out.println("Created Statement");
+        Statement prep = conn.createStatement();
+        System.out.println("Prepped statement");
+        ResultSet r = prep.executeQuery(stmt);
+        System.out.println("Got result set");
+        String[] options = new String[r.getInt(2)];
         Question q = new Question();
+        q.setId(r.getLong(0));
+        q.setQuestionText(r.getString(1));
+        int j = 0;
+        while(r.next()){
+            options[j] = r.getString(3);
+            j++;
+        }
+        q.setAnswerOptions(options);
+        conn.close();
         return q;
     }
 

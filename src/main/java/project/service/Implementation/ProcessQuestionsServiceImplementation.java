@@ -5,6 +5,7 @@ import project.persistence.entities.Question;
 import project.persistence.repositories.QuestionRepository;
 import project.service.ProcessQuestionsService;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ import java.util.ListIterator;
 @Service
 public class ProcessQuestionsServiceImplementation implements ProcessQuestionsService {
     Question question = new Question();//bætti við þessu til að vinna í processAnswers
-    QuestionRepository repository;
+    QuestionRepository repository = new QuestionRepository();
 
 
     //The answer given will be saved in the entity Question.
@@ -41,7 +42,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     @Override
     //This is where get the next question to be used.
-    public Question findOne(long id) {
+    public Question findOne(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         Question q = repository.findOne(id);
         System.out.println(q.getQuestionText());
         return repository.findOne(id);

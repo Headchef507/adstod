@@ -53,7 +53,7 @@
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>
 
                         <%--Create a link based on the name attribute value--%>
-                        <td><a href="/questions/${questionText.questionText}">${questionText.questionText}</a></td>
+                        <td>${question.questionText}</td>
                         <%--The String in the note attribute--%>
                         <%--td>${postit.note}</td--%>
                     </tr>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Question;
 import project.service.ProcessQuestionsService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -36,7 +37,7 @@ public class SessionController {
     }
 
     @RequestMapping (value = "/question", method = RequestMethod.GET)
-    public String getQuestionFromID(Model model) {
+    public String getQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         // Add a new Postit Note to the model for the form
         // If you look at the form in PostitNotes.jsp, you can see that we
         // reference this attribute there by the name `postitNote`.
@@ -46,7 +47,7 @@ public class SessionController {
         model.addAttribute("question",processQuestionsService.findOne(1));
 
         // Return the view
-        return "question/Question";
+        return "questions/Question";
     }
 
     /*   // To call this method, enter "localhost:8080/user" into a browser
