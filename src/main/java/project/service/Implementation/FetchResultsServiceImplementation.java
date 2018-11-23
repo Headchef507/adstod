@@ -15,10 +15,11 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     // Instance Variables
     private QuestionRepository repository;
 
+    /*
     //This is the constructor
     // Dependency Injection
     // @Autowired
-    /*public FetchResultsServiceImplementation(QuestionRepository repository) {
+    public FetchResultsServiceImplementation(QuestionRepository repository) {
         this.repository = repository;
     }*/
 

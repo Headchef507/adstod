@@ -16,14 +16,14 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     Question question = new Question();//bætti við þessu til að vinna í processAnswers
     QuestionRepository repository;
 
-/*
+
     //The answer given will be saved in the entity Question.
     @Override
     public void saveAnswers(List<Question> answers, String theAnswer) { //return repository.save(answers);
         question.setAnswer(theAnswer);
         answers.add(question);
 
-
+/*
     }
     //After the User answers a question, the answer will processed here.
     //Depending on the id of the question, depends on how it will be processed.
@@ -36,9 +36,9 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
             this.question = answers.get(i);
             if(question.getId() == 1 || question.getId() == 2); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
         }
-
-    }
 */
+    }
+
     @Override
     //This is where get the next question to be used.
     public Question findOne(long id) {
