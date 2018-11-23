@@ -19,7 +19,9 @@ public class QuestionRepository {
     List<Question> answers = null;
     List<Result> results = null;
     private Connection conn = null;
-    private String url = "jdbc::mysql://localhost:3306/adstodQuestions";
+    private String username = "kannski";
+    private String password = "Kannski123";
+    private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
 
     public void QuestionRepository(){
         System.out.println("x");
@@ -66,8 +68,8 @@ public class QuestionRepository {
      */
     //@Query(value = "SELECT * FROM QuestionsICE q WHERE q.id = ?1", nativeQuery = true)
     public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        /*Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection(url);
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection(url, username, password);
         System.out.println("Got here");
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
         System.out.println("Created Statement");
@@ -85,9 +87,7 @@ public class QuestionRepository {
             j++;
         }
         q.setAnswerOptions(options);
-        conn.close();*/
-        String[] options = {"yes", "no"};
-        Question q = new Question(1, "test question not from db", options, null);
+        conn.close();
         return q;
     }
 
