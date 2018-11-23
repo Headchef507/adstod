@@ -13,5 +13,5 @@ public interface ProcessQuestionsService {
 
     //void processAnswers(List<Question> answers);
 
-    List<Question> getQuestionsById(int i);
+    Question findOne(long i);
 }

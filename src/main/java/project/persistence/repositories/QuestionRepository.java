@@ -1,12 +1,14 @@
 package project.persistence.repositories;
 
 // Imports needed
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import project.persistence.entities.Question;
 
-public interface QuestionRepository extends JpaRepository<Question, Long> {
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+
+public class QuestionRepository {
 
 //https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/query/QueryByExampleExecutor.html?is-external=true#findOne-org.springframework.data.domain.Example-
 
@@ -15,6 +17,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
      * and the latest fetched question that the user is answering at the time
      */
     List<Question> answers = null;
+    EntityManagerFactory emf;
 
     /**
      * Function saveAnswers was/is intended to save an answer that the user
@@ -34,8 +37,14 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
      * Incomplete, query needs to be reworked
      * Made now to get the program running
      */
-    @Query(value = "SELECT q FROM Question q WHERE q.id = ?1")
-    Question findOne(Long i);
+    //@Query(value = "SELECT * FROM QuestionsICE q WHERE q.id = ?1", nativeQuery = true)
+    public Question findOne(Long i){
+        EntityManager em = emf.createEntityManager();
+        Query que = em.createNativeQuery("SELECT * FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = 1;");
+        
+        Question q = new Question();
+        return q;
+    }
 
     /**
      * Function processAnswers was/is intended to get the answers

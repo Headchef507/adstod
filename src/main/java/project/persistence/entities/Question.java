@@ -3,19 +3,11 @@ package project.persistence.entities;
 import javax.persistence.*;
 import java.util.Iterator;
 /*
-The class that each question and there multiple answers.
+The class that each questionText and there multiple answers.
  */
 
 @Entity
-/*
-* @Table(name = "postitnote") // If you want to specify a table name, you can do so here
-* Í PostitNote þá var valmöguleikinn að setja þetta upp sem töflu
- */
 @Table(name = "questionsice")
-@SecondaryTables({
-        @SecondaryTable(name="questionseng"),
-        @SecondaryTable(name="questionspol")
-})
 public class Question implements Iterator<Question> {
 
     // Declares that this attribute is the id (primary key
@@ -23,7 +15,7 @@ public class Question implements Iterator<Question> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String question;
+    private String questionText;
     private String[] answerOptions;
     private String answer;
     private String language;
@@ -33,16 +25,15 @@ public class Question implements Iterator<Question> {
     public Question() {
         //We need and empty Question in the beginning
     }
-    public Question(String question, String[] answerOptions, String answer){
-        this.question = question;
+    public Question(long id, String questionText, String[] answerOptions, String answer){
+        this.id = id;
+        this.questionText = questionText;
         this.answerOptions = answerOptions;
         this.answer = answer;
 
     }
-    //PostitNote þá var id Long heldur en int, athuga það!!
 
-
-    //the id of each question
+    //the id of each questionText
     public long getId() { return id; }
 
     public void setId(long id) { this.id = id; }
@@ -53,10 +44,10 @@ public class Question implements Iterator<Question> {
 
     public void setAnswer(String answer){ this.answer = answer; }
 
-    //the question for the User. For example: question == "What is your sex?"
-    public String getQuestion() { return question; }
+    //the questionText for the User. For example: questionText == "What is your sex?"
+    public String getQuestionText() { return questionText; }
 
-    public void setQuestion(String question) { this.question = question; }
+    public void setQuestionText(String questionText) { this.questionText = questionText; }
 
 
    //These are the users answer options

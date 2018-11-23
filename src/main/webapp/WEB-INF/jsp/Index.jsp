@@ -15,7 +15,7 @@
 
     <ul>
         <%-- það var posti á þessum stað--%>
-        <li><a href="/result">Click here for Persistence Layer Demo</a></li>
+        <li><a href="/question">Click here for Persistence Layer Demo</a></li>
     </ul>
     </body>
     <footer>Class HBV501G, University of Iceland</footer>

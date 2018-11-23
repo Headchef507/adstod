@@ -40,11 +40,6 @@ CREATE TABLE OptionsPOL(                     # Table holding all possible answer
   OptionText VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE AnswerSets(                  # Table holding all answer sets possible for matching with results
-  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  AnswerOptionSet TEXT NOT NULL
-);
-
 CREATE TABLE PhoneNumbers(                # Table holding phone numbers for all assistance resources
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   Number VARCHAR(11) NOT NULL
@@ -58,9 +53,14 @@ CREATE TABLE AssistanceResources(         # Table holding names and links of all
 
 CREATE TABLE Results(                   # Table holding all possible results from answer sets
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResultTitle VARCHAR(255) NOT NULL,
-  AnswerSetID BIGINT(20) NOT NULL,
-  CONSTRAINT FOREIGN KEY (AnswerSetID) REFERENCES AnswerSets(ID)
+  ResultTitle VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE AnswerSets(                  # Table holding all answer sets possible for matching with results
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  AnswerOptionSet TEXT NOT NULL,
+  ResultID BIGINT(20),
+  CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID)
 );
 
 /**
@@ -93,7 +93,7 @@ CREATE TABLE ResourcesForResults(
 
 /*
  * These tables connect the Options tables to the Questions tables
- * Each question has multiple options
+ * Each questionText has multiple options
  * Each option can be used in multiple questions
  * This makes the connection tables useful for reducing redundant data
  */
@@ -128,22 +128,22 @@ CREATE TABLE OptionsForAnswersPOL(
 );
 
 -- Inserts
--- Inserting 1 question in every language
+-- Inserting 1 questionText in every language
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Kyn?", 3);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Gender?", 3);
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER?", 3); -- Polish translation needed
 
--- Inserting all options for 1 question in icelandic
+-- Inserting all options for 1 questionText in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Kvenkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Annað");
 
--- Inserting all options for 1 question in english
+-- Inserting all options for 1 questionText in english
 INSERT INTO OptionsENG (OptionText) VALUES ("Male");
 INSERT INTO OptionsENG (OptionText) VALUES ("Female");
 INSERT INTO OptionsENG (OptionText) VALUES ("Other");
 
--- Inserting all options for 1 question in polish
+-- Inserting all options for 1 questionText in polish
 -- Translation needed
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHMale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHFemale");
@@ -165,9 +165,9 @@ INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com"
 INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
 
 -- Inserting results
-INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Male gender", 1);
-INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Female gender", 2);
-INSERT INTO Results(ResultTitle, AnswerSetID) VALUES ("Other gender", 3);
+INSERT INTO Results(ResultTitle) VALUES ("Male gender");
+INSERT INTO Results(ResultTitle) VALUES ("Female gender");
+INSERT INTO Results(ResultTitle) VALUES ("Other gender");
 
 -- Connecting phone numbers to assistance resources
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
@@ -180,9 +180,15 @@ INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
 
 
--- Connecting the questions to options and the next question in line
+-- Connecting the questions to options and the next questionText in line
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 1);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 1);
 
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 1);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 1);
 
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 1);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 1);

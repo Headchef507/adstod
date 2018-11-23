@@ -3,6 +3,7 @@ package project.controller;
 // Imports needed
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Question;
@@ -33,8 +34,19 @@ public class SessionController {
         // file that has the same name
           return "Index"; //getum núna notað fallið
     }
-    public List<Question> getQuestionsFromID(int[] id) {
-        return null;
+
+    @RequestMapping (value = "/question", method = RequestMethod.GET)
+    public String getQuestionFromID(Model model) {
+        // Add a new Postit Note to the model for the form
+        // If you look at the form in PostitNotes.jsp, you can see that we
+        // reference this attribute there by the name `postitNote`.
+        //model.addAttribute("question",new Question());
+
+        // Here we get all the Postit Notes (in a reverse order) and add them to the model
+        model.addAttribute("question",processQuestionsService.findOne(1));
+
+        // Return the view
+        return "question/Question";
     }
 
     /*   // To call this method, enter "localhost:8080/user" into a browser

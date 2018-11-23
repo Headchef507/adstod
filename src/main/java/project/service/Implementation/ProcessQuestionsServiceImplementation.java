@@ -41,8 +41,11 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 */
     @Override
     //This is where get the next question to be used.
-    public List<Question> getQuestionsById(int id) {
-        List<Question> questions = new List<Question>() {
+    public Question findOne(long id) {
+        Question q = repository.findOne(id);
+        System.out.println(q.getQuestionText());
+        return repository.findOne(id);
+        /*List<Question> questions = new List<Question>() {
             @Override
             public int size() {
                 return 0;
@@ -161,6 +164,6 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         long i = 1;
         repository.findOne(i);
 
-        return questions;
+        return questions;*/
     }
 }

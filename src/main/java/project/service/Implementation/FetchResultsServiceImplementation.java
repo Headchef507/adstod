@@ -17,10 +17,10 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
 
     //This is the constructor
     // Dependency Injection
-    @Autowired
-    public FetchResultsServiceImplementation(QuestionRepository repository) {
+    // @Autowired
+    /*public FetchResultsServiceImplementation(QuestionRepository repository) {
         this.repository = repository;
-    }
+    }*/
 
 /*
     This is where we get the object called Result, see the Entity Result for more information.
