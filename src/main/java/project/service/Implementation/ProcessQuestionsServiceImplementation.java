@@ -20,9 +20,9 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     //The answer given will be saved in the entity Question.
     @Override
-    public void saveAnswers(List<Question> answers, String theAnswer) { //return repository.save(answers);
-        question.setAnswer(theAnswer);
-        answers.add(question);
+    public void saveAnswers(Question theQuestion, String theAnswer) { //return repository.save(answers);
+        theQuestion.setAnswer(theAnswer);                             //First í you set the Answer in the Question for later use
+        repository.saveAnswers(theQuestion);
 
 /*
     }
