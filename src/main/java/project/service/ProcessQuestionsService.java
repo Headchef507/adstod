@@ -10,7 +10,7 @@ public interface ProcessQuestionsService {
     //See the corresponding implementation for all information on this service
     //ProcessQuestionServiceImplementation
 
-    void saveAnswers(List<Question> answers, String theAnswer);
+    void saveAnswers(Question theQuestion, String theAnswer);
 
     //void processAnswers(List<Question> answers);
 
