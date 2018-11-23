@@ -51,7 +51,7 @@ public class QuestionRepository {
      */
     //@Query(value = "SELECT * FROM QuestionsICE q WHERE q.id = ?1", nativeQuery = true)
     public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        /*Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url);
         System.out.println("Got here");
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
@@ -70,7 +70,9 @@ public class QuestionRepository {
             j++;
         }
         q.setAnswerOptions(options);
-        conn.close();
+        conn.close();*/
+        String[] options = {"yes", "no"};
+        Question q = new Question(1, "test question not from db", options, null);
         return q;
     }
 
