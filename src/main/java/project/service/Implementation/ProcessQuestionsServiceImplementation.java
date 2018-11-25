@@ -18,27 +18,31 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     private QuestionRepository repository = new QuestionRepository();
 
 
+
     //The answer given will be saved in the entity Question.
     @Override
     public void saveAnswers(Question theQuestion, String theAnswer) { //return repository.save(answers);
         theQuestion.setAnswer(theAnswer);                             //First í you set the Answer in the Question for later use
         repository.saveAnswers(theQuestion);
-
-/*
     }
+
+
+
     //After the User answers a question, the answer will processed here.
     //Depending on the id of the question, depends on how it will be processed.
     //Some questions have only two answer options and others several.
     //Depending on those, the User will recieve fewer questions.
     @Override
-    public void processAnswers(List<Question> answers) {
+    //Með nýju pælingunni þá er þetta essentially useless
+    public void processAnswers(Question answers) {
+        repository.saveAnswers(answers);
         int i = 0; //telur upp hver object
-        while(i < answers.size()){
+        while (i < answers.size()) {
             this.question = answers.get(i);
-            if(question.getId() == 1 || question.getId() == 2); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
+            if (question.getId() == 1 || question.getId() == 2) ; // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
         }
-*/
     }
+
 
     @Override
     //This is where get the next question to be used.
