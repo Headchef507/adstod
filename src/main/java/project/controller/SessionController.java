@@ -17,6 +17,8 @@ public class SessionController {
 
     // Initializing variables
     private ProcessQuestionsService processQuestionsService;
+    int x = 0;
+    Question q;
 
     // Constructor
     @Autowired
@@ -44,8 +46,13 @@ public class SessionController {
         //model.addAttribute("question",new Question());
 
         // Here we get all the Postit Notes (in a reverse order) and add them to the model
-        model.addAttribute("Question",processQuestionsService.findOne(1));
-
+        if(x == 0) {
+            q = processQuestionsService.findOne(1);
+            model.addAttribute("Question", q);
+            x++;
+        } else {
+            model.addAttribute("Question", processQuestionsService.findOne(processQuestionsService.processAnswers(q)));
+        }
         // Return the view
         return "/Question";
     }
