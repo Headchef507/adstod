@@ -23,7 +23,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     @Override
     public void saveAnswers(Question theQuestion, String theAnswer) { //return repository.save(answers);
         theQuestion.setAnswer(theAnswer);                             //First í you set the Answer in the Question for later use
-        repository.saveAnswers(theQuestion);
+        repository.saveAnswers((int)theQuestion.getId(),theQuestion);
     }
 
 
@@ -41,7 +41,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
        //     this.question = answers.get(i);
             if (question.getId() == 1 || question.getId() == 2) ; // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
         }
-    }
+
 
 
     @Override
