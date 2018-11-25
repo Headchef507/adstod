@@ -35,10 +35,10 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     @Override
     //Með nýju pælingunni þá er þetta essentially useless
     public void processAnswers(Question answers) {
-        repository.saveAnswers(answers);
+       // repository.saveAnswers(answers);
         int i = 0; //telur upp hver object
-        while (i < answers.size()) {
-            this.question = answers.get(i);
+       // while (i < answers.size()) {
+       //     this.question = answers.get(i);
             if (question.getId() == 1 || question.getId() == 2) ; // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
         }
     }
