@@ -16,8 +16,7 @@
 
     <p>Insert languages here</p>
     <ul>
-        <%-- það var posti á þessum stað--%>
-        <li><a href="/Question">Click here for Persistence Layer Demo</a></li>
+        <li><a href="/Question">START</a></li>
     </ul>
     </body>
     <footer>ASDF</footer>

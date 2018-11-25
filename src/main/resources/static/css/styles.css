@@ -2,7 +2,7 @@ body{
     background-color: black;
 }
 
-p {
+p, footer {
     color: white;
 }
 
