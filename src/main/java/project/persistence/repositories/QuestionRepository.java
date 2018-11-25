@@ -16,15 +16,18 @@ public class QuestionRepository {
      * List of all questions that the user has answered
      * and the latest fetched question that the user is answering at the time
      */
-    List<Question> answers = null;
-    List<Result> results = null;
+    private List<Question> answers = null;
+    private Question q;
+    private List<Result> results = null;
     private Connection conn = null;
     private String username = "kannski";
     private String password = "Kannski123";
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
 
     public void QuestionRepository(){
-        System.out.println("x");
+        //a loop to set the lists size at 16 (which is the current amount
+        //of Questions.
+        for(int i = 0; i < 16; i++) answers.add(q);
         /*try{
             conn = DriverManager.getConnection(url);
             System.out.println("null");
@@ -41,8 +44,8 @@ public class QuestionRepository {
      * makes into the answers List above
      * Incomplete
      */
-    public void saveAnswers(Question answer){
-        this.answers.add(answer);
+    public void saveAnswers(int theId, Question answer){
+        this.answers.set(theId, answer);
 
     }
 
