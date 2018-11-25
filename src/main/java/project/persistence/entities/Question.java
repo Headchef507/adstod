@@ -17,7 +17,7 @@ public class Question implements Iterator<Question> {
 
     private String questionText;
     private String[] answerOptions;
-    private String answer;
+    private int answer;
     private String language;
 
     //PostitNote used an empty constructor, because we need to be able to create an empty PostitNote to add
@@ -25,7 +25,7 @@ public class Question implements Iterator<Question> {
     public Question() {
         //We need and empty Question in the beginning
     }
-    public Question(long id, String questionText, String[] answerOptions, String answer){
+    public Question(long id, String questionText, String[] answerOptions, int answer){
         this.id = id;
         this.questionText = questionText;
         this.answerOptions = answerOptions;
@@ -40,9 +40,9 @@ public class Question implements Iterator<Question> {
 
 
     //this is where the answer the User picks best fits him or her.
-    public String getAnswer(){ return answer; }
+    public int getAnswer(){ return answer; }
 
-    public void setAnswer(String answer){ this.answer = answer; }
+    public void setAnswer(int answer){ this.answer = answer; }
 
     //the questionText for the User. For example: questionText == "What is your sex?"
     public String getQuestionText() { return questionText; }

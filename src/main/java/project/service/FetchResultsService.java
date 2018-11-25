@@ -9,6 +9,6 @@ public interface FetchResultsService {
 
     //Information in corresponding implementation (FetchResultsServiceImplementation)
 
-    //List<Result> getResults(List<Question> answers);
+    List<Result> getResults();
 
 }
