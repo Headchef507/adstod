@@ -14,8 +14,8 @@ import java.util.ListIterator;
 
 @Service
 public class ProcessQuestionsServiceImplementation implements ProcessQuestionsService {
-    Question question = new Question();//bætti við þessu til að vinna í processAnswers
-    QuestionRepository repository = new QuestionRepository();
+    private Question question = new Question();//bætti við þessu til að vinna í processAnswers
+    private QuestionRepository repository = new QuestionRepository();
 
 
     //The answer given will be saved in the entity Question.
