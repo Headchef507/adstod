@@ -49,11 +49,11 @@ public class SessionController {
         if(x == 0) {
             q = processQuestionsService.findOne(1);
             model.addAttribute("Question", q);
+            model.addAttribute("QuestionCount", processQuestionsService.getAnswersSize());
             x++;
         } else {
             q = processQuestionsService.findOne(processQuestionsService.findNextQuestion(q));
             model.addAttribute("Question", q);
-            model.addAttribute("QuestionCount", processQuestionsService.getAnswersSize());
         }
 
         // Return the view
