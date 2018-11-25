@@ -21,7 +21,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     //The answer given will be saved in the entity Question and down in the Repo
     @Override
-    public void saveAnswers(Question theQuestion, String theAnswer) { //return repository.save(answers);
+    public void saveAnswers(Question theQuestion, int theAnswer) { //return repository.save(answers);
         theQuestion.setAnswer(0);                             //First í you set the Answer in the Question for later use
         repository.saveAnswers((int)theQuestion.getId(),theQuestion);
     }
@@ -32,21 +32,27 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     //Depending on the id of the question, depends on how it will be processed.
     //Some questions have only two answer options and others several.
     //Depending on those, the User will recieve fewer questions.
-    @Override
+  //  @Override
     //Með nýju pælingunni þá er þetta essentially useless
-    public int processAnswers(Question answers) { //breytti frá void yfir í Question svo við skilum til baka næstum spurningu
+ //   public int processAnswers(Question answers) { //breytti frá void yfir í Question svo við skilum til baka næstum spurningu
        // repository.saveAnswers(answers);
         //int i = 0; //telur upp hver object
        // while (i < answers.size()) {
        //     this.question = answers.get(i);
-            if (answers.getId() == 3 || question.getId() == 7) {
+        /*    if (answers.getId() == 3 || question.getId() == 7) {
                 if (answers.getAnswer() == 0)
                     return (int) (answers.getId() + 1); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
                 else return (int) answers.getId() + 2;
             }
-            return (int) answers.getId()+1;
-        }
+            return (int) answers.getId()+1;*/
 
+
+        //}
+
+   /*
+   This question finds the next one, if there are conditional questions
+   It jumps out of it
+    */
         @Override
         public int findNextQuestion(Question answers) {
             if (answers.getId() == 3 || question.getId() == 7) {

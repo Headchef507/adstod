@@ -10,9 +10,9 @@ public interface ProcessQuestionsService {
     //See the corresponding implementation for all information on this service
     //ProcessQuestionServiceImplementation
 
-    void saveAnswers(Question theQuestion, String theAnswer);
+    void saveAnswers(Question theQuestion, int theAnswer);
 
-    int processAnswers(Question answers);
+    //int processAnswers(Question answers);
 
     Question findOne(long i) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 
