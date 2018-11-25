@@ -55,7 +55,6 @@ public class SessionController {
             model.addAttribute("Question", q);
         }
 
-        model.addAttribute("QuestionsAnswered", processQuestionsService.getAnswersSize());
         // Return the view
         return "/Question";
     }

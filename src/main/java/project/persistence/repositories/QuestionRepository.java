@@ -24,10 +24,18 @@ public class QuestionRepository {
     private String password = "Kannski123";
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
 
-    public void QuestionRepository(){
+    public void QuestionRepository() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
         //a loop to set the lists size at 16 (which is the current amount
         //of Questions.
-        for(int i = 0; i < 16; i++) answers.add(q);
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection(url, username, password);
+        String stmt = "SELECT id FROM QuestionsICE ORDER BY ID DESC LIMIT 1;";
+        Statement prep = conn.createStatement();
+        ResultSet r = prep.executeQuery(stmt);
+        int c = 0;
+        if(r.next())
+            c = r.getInt(1);
+        for(int i = 0; i < c; i++) answers.add(q);
         /*try{
             conn = DriverManager.getConnection(url);
             System.out.println("null");
@@ -91,7 +99,6 @@ public class QuestionRepository {
         }
         q.setAnswerOptions(options);
         conn.close();
-        answers.add(q);
         return q;
     }
 
