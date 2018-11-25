@@ -47,6 +47,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
             return (int) answers.getId()+1;
         }
 
+        @Override
         public int findNextQuestion(Question answers) {
             if (answers.getId() == 3 || question.getId() == 7) {
                 if (answers.getAnswer() == 0)
