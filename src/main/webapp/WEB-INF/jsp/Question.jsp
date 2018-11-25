@@ -28,7 +28,7 @@
         <p>${Question.questionText}</p>
 
         <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
-            <input type="radio" name="rb" value="${counter}"/> ${Question.answerOptions[counter]}
+            <input type="radio" name="rb" value="${counter+1}"/> ${Question.answerOptions[counter]}
         </c:forEach>
 
     </sf:form>
