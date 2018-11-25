@@ -44,7 +44,7 @@
 
     <ul>
         <%-- það var posti á þessum stað--%>
-        <li><a href="./questions/Question.jsp">Click here for Persistence Layer Demo</a></li>
+        <li><a href="/question">Click here for Persistence Layer Demo</a></li>
     </ul>
     </body>
     <footer>ASDF</footer>
