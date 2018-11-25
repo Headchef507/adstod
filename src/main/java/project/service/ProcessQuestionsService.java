@@ -19,4 +19,6 @@ public interface ProcessQuestionsService {
     int findNextQuestion(Question answers);
 
     int findPreviousQuestion(Question currq);
+
+    int getAnswersSize();
 }

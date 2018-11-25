@@ -204,4 +204,8 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
         return questions;*/
     }
+
+    public int getAnswersSize(){
+            return repository.getAnswersSize();
+    }
 }

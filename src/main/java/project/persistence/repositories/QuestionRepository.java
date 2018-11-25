@@ -91,7 +91,12 @@ public class QuestionRepository {
         }
         q.setAnswerOptions(options);
         conn.close();
+        answers.add(q);
         return q;
+    }
+
+    public int getAnswersSize(){
+        return this.answers.size();
     }
 
     /**

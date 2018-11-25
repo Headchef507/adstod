@@ -54,6 +54,8 @@ public class SessionController {
             q = processQuestionsService.findOne(processQuestionsService.findNextQuestion(q));
             model.addAttribute("Question", q);
         }
+
+        model.addAttribute("QuestionsAnswered", processQuestionsService.getAnswersSize());
         // Return the view
         return "/Question";
     }
