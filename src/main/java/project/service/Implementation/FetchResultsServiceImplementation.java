@@ -18,19 +18,31 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them
     private List<AssistanceResource> assistanceResources; //List of all of the
 
-    /*
+
     //This is the constructor
     // Dependency Injection
-    // @Autowired
-    public FetchResultsServiceImplementation(QuestionRepository repository) {
-        this.repository = repository;
-    }*/
+   /*  @Autowired
+    public FetchResultsServiceImplementation() {
+    } */
+    public List<Question> getAnsweredQuestion() { //doesn´t do anything;
+        return answeredQuestion;
+    }
 
-/*
-    This is where we get the object called Result, see the Entity Result for more information.
+
+
+    //This is where we get the object called Result, see the Entity Result for more information.
     @Override
-    public List<Result> getResults(List<Question> answers) { return this.repository.getResults(answers); }
-*/
+    public List<Result> getResults() {
+        this.answeredQuestion = repository.getAnswers();
+        AssistanceResource a = new AssistanceResource();
+        if (answeredQuestion.get(0).getAnswer() == 0 ||
+                3 < 4)
+            assistanceResources.add(a);
+
+
+
+        return this.repository.getResults();
+    }
 
 
 }
