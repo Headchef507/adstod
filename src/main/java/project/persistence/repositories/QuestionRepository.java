@@ -76,12 +76,14 @@ public class QuestionRepository {
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
         int x = 0;
-        if(r.next())
+        if(r.next()) {
             x = r.getInt(3);
+        }
         System.out.println(x);
         String[] options = new String[x];
+        options[0] = r.getString(4);
         Question q = new Question();
-        int j = 0;
+        int j = 1;
         while(r.next()){
             q.setId(r.getLong(1));
             q.setQuestionText(r.getString(2));
