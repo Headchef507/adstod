@@ -55,7 +55,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     */
         @Override
         public int findNextQuestion(Question answers) {
-            if (answers.getId() == 3 || question.getId() == 7) {
+            if (answers.getId() == 4 || question.getId() == 8) {
                 if (answers.getAnswer() == 1)
                     return (int) (answers.getId() + 1); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
                 else return (int) answers.getId() + 2;
@@ -66,12 +66,14 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
         //Back button: goes to the previous question
     //currq is the current question
+    //if it a jump question previously, it checks wether you answered that
     @Override
     public int findPreviousQuestion(Question currq){
-            if(currq.getId()==5 || currq.getId()==9){
-
+            if(currq.getId()==6 || currq.getId()==10){
+                if(repository.getAnswers().get((int)currq.getId()-1).getAnswer() == 0)
+                    return (int)currq.getId()-2;
             }
-            return 0;
+            return (int)currq.getId()-1;
     }
 
 
