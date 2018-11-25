@@ -47,6 +47,15 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
             return (int) answers.getId()+1;
         }
 
+        public int findNextQuestion(Question answers) {
+            if (answers.getId() == 3 || question.getId() == 7) {
+                if (answers.getAnswer() == 0)
+                    return (int) (answers.getId() + 1); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
+                else return (int) answers.getId() + 2;
+            }
+            return (int) answers.getId()+1;
+        }
+
 
 
     @Override
