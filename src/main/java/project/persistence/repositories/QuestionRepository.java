@@ -66,24 +66,22 @@ public class QuestionRepository {
      * Incomplete, query needs to be reworked
      * Made now to get the program running
      */
-    //@Query(value = "SELECT * FROM QuestionsICE q WHERE q.id = ?1", nativeQuery = true)
     public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
-        System.out.println("Got here");
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
-        System.out.println("Created Statement");
         Statement prep = conn.createStatement();
-        System.out.println("Prepped statement");
         ResultSet r = prep.executeQuery(stmt);
-        System.out.println("Got result set");
-        String[] options = new String[r.getInt(2)];
+        int x = 0;
+        if(r.next())
+            x = r.getInt(3);
+        String[] options = new String[x];
         Question q = new Question();
-        q.setId(r.getLong(0));
-        q.setQuestionText(r.getString(1));
         int j = 0;
         while(r.next()){
-            options[j] = r.getString(3);
+            q.setId(r.getLong(1));
+            q.setQuestionText(r.getString(2));
+            options[j] = r.getString(4);
             j++;
         }
         q.setAnswerOptions(options);

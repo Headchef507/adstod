@@ -51,18 +51,20 @@ CREATE TABLE AssistanceResources(         # Table holding names and links of all
   Link TEXT NOT NULL
 );
 
+/*
 CREATE TABLE Results(                   # Table holding all possible results from answer sets
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   ResultTitle VARCHAR(255) NOT NULL
 );
-
+*/
+/*
 CREATE TABLE AnswerSets(                  # Table holding all answer sets possible for matching with results
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   AnswerOptionSet TEXT NOT NULL,
   ResultID BIGINT(20),
   CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID)
 );
-
+*/
 /**
  * This table connects the PhoneNumbers table to the AssistanceResources table
  * Each assistance resource can have many phone numbers
@@ -83,6 +85,7 @@ CREATE TABLE PhoneNumbersForResources(
  * Each result can point to one or more assistance resources
  * This makes the connection table useful for reducing redundant data
  */
+/*
 CREATE TABLE ResourcesForResults(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   ResultID BIGINT(20) NOT NULL,
@@ -90,6 +93,7 @@ CREATE TABLE ResourcesForResults(
   CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID),
   CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
 );
+*/
 
 /*
  * These tables connect the Options tables to the Questions tables
@@ -101,7 +105,7 @@ CREATE TABLE OptionsForAnswersICE(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   QuestionID BIGINT(20) NOT NULL,
   OptionID BIGINT(20) NOT NULL,
-  NextQuestionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20),
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsICE(ID),
   CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsICE(ID),
   CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsICE(ID)
@@ -111,7 +115,7 @@ CREATE TABLE OptionsForAnswersENG(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   QuestionID BIGINT(20) NOT NULL,
   OptionID BIGINT(20) NOT NULL,
-  NextQuestionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20),
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsENG(ID),
   CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsENG(ID),
   CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsENG(ID)
@@ -121,7 +125,7 @@ CREATE TABLE OptionsForAnswersPOL(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   QuestionID BIGINT(20) NOT NULL,
   OptionID BIGINT(20) NOT NULL,
-  NextQuestionID BIGINT(20) NOT NULL,
+  NextQuestionID BIGINT(20),
   CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES QuestionsPOL(ID),
   CONSTRAINT FOREIGN KEY (OptionID) REFERENCES OptionsPOL(ID),
   CONSTRAINT FOREIGN KEY (NextQuestionID) REFERENCES QuestionsPOL(ID)
@@ -148,12 +152,12 @@ INSERT INTO OptionsENG (OptionText) VALUES ("Other");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHMale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHFemale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHOther");
-
+/*
 -- Inserting all possible answer sets
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("1");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("2");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("3");
-
+*/
 -- Inserting phone numbers for assistance resources
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545465645");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545656565");
@@ -163,23 +167,22 @@ INSERT INTO PhoneNumbers(Number) VALUES ("+3545555555");
 INSERT INTO AssistanceResources(Title, Link) VALUES ("Addi-kun", "addikun.is");
 INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com");
 INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
-
+/*
 -- Inserting results
 INSERT INTO Results(ResultTitle) VALUES ("Male gender");
 INSERT INTO Results(ResultTitle) VALUES ("Female gender");
 INSERT INTO Results(ResultTitle) VALUES ("Other gender");
-
+*/
 -- Connecting phone numbers to assistance resources
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (3, 3);
-
+/*
 -- Connecting assistance resources to results
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
-
-
+*/
 -- Connecting the questions to options and the next questionText in line
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 1);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 1);
