@@ -8,7 +8,7 @@
 
     <head>
         <title>ADSTOD</title>
-        <link rel="stylesheet" href="<c:url value="../../../resources/static/css/styles.css"/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/styles.css"/>"/>
     </head>
     <body>
 
