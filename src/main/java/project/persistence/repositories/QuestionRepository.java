@@ -78,6 +78,7 @@ public class QuestionRepository {
         int x = 0;
         if(r.next())
             x = r.getInt(3);
+        System.out.println(x);
         String[] options = new String[x];
         Question q = new Question();
         int j = 0;
