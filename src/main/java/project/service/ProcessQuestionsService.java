@@ -17,4 +17,6 @@ public interface ProcessQuestionsService {
     Question findOne(long i) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 
     int findNextQuestion(Question answers);
+
+    int findPreviousQuestion(Question currq);
 }
