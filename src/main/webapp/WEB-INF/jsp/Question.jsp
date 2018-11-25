@@ -4,14 +4,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 
     <head>
         <title>Question</title>
 
-        <link rel="stylesheet" href="<c:url value="../../../resources/static/css/styles.css"/>"/>
-        <script src="<c:url value="../../../resources/static/js/Question.js" />"></script>
+        <link rel="stylesheet" href="<c:url value="/css/Question.css"/>"/>
+        <script src="<c:url value="/js/Question.js" />"></script>
     </head>
     <body>
 
@@ -35,9 +36,13 @@
             </tr--%>
         </table>
 
-        <input type="submit" VALUE="Question!"/>
+        <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
+            <input type="radio" name="rb"/> ${Question.answerOptions[counter]}
+        </c:forEach>
 
     </sf:form>
+
+
 
     <%--Choose what code to generate based on tests that we implement--%>
     <%--c:choose>

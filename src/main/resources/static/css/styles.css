@@ -1,23 +1,9 @@
 body{
-    background-color: blue;
+    background-color: black;
 }
 
-table.notes {
-    border: 1px black solid;
-}
-
-.notes td {
-    padding: 15px;
-    text-align: left;
-}
-
-table.notes tr:nth-child(even) {
-    background-color: antiquewhite;
-}
-/* background-color:  */
-
-table.notes tr:nth-child(odd) {
-    background-color: azure;
+p {
+    color: white;
 }
 
 h1 {
