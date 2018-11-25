@@ -12,7 +12,7 @@ public interface ProcessQuestionsService {
 
     void saveAnswers(Question theQuestion, String theAnswer);
 
-    void processAnswers(Question answers);
+    int processAnswers(Question answers);
 
     Question findOne(long i) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 }
