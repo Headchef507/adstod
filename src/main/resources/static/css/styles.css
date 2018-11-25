@@ -16,3 +16,7 @@ table.notes tr:nth-child(even) {
 table.notes tr:nth-child(odd) {
     background-color: azure;
 }
+
+h1 {
+    color: red;
+}

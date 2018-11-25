@@ -36,7 +36,7 @@ public class SessionController {
           return "Index"; //getum núna notað fallið
     }
 
-    @RequestMapping (value = "/Question/{question.id}", method = RequestMethod.GET)
+    @RequestMapping (value = "/Question", method = RequestMethod.GET)
     public String getQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         // Add a new Postit Note to the model for the form
         // If you look at the form in PostitNotes.jsp, you can see that we

@@ -10,7 +10,8 @@
     <head>
         <title>Question</title>
 
-        <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/Question.css"/>"/>
+        <link rel="stylesheet" href="<c:url value="../../../resources/static/css/styles.css"/>"/>
+        <script src="<c:url value="../../../resources/static/js/Question.js" />"></script>
     </head>
     <body>
 
