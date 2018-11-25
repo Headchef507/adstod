@@ -19,7 +19,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
 
 
-    //The answer given will be saved in the entity Question.
+    //The answer given will be saved in the entity Question and down in the Repo
     @Override
     public void saveAnswers(Question theQuestion, String theAnswer) { //return repository.save(answers);
         theQuestion.setAnswer(theAnswer);                             //First í you set the Answer in the Question for later use
@@ -34,12 +34,17 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     //Depending on those, the User will recieve fewer questions.
     @Override
     //Með nýju pælingunni þá er þetta essentially useless
-    public void processAnswers(Question answers) {
+    public int processAnswers(Question answers) { //breytti frá void yfir í Question svo við skilum til baka næstum spurningu
        // repository.saveAnswers(answers);
-        int i = 0; //telur upp hver object
+        //int i = 0; //telur upp hver object
        // while (i < answers.size()) {
        //     this.question = answers.get(i);
-            if (question.getId() == 1 || question.getId() == 2) ; // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
+            if (answers.getId() == 3 || question.getId() == 7) {
+                if (answers.getAnswer() == "True")
+                    return (int) (answers.getId() + 1); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
+                else return (int) answers.getId() + 2;
+            }
+            return (int) answers.getId()+1;
         }
 
 
@@ -49,7 +54,8 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     public Question findOne(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         Question q = repository.findOne(id);
         System.out.println(q.getQuestionText());
-        return repository.findOne(id);
+        this.question = repository.findOne(id);
+        return this.question;
         /*List<Question> questions = new List<Question>() {
             @Override
             public int size() {
