@@ -53,6 +53,7 @@ public class SessionController {
         } else {
             q = processQuestionsService.findOne(processQuestionsService.findNextQuestion(q));
             model.addAttribute("Question", q);
+            model.addAttribute("QuestionCount", processQuestionsService.getAnswersSize());
         }
 
         // Return the view

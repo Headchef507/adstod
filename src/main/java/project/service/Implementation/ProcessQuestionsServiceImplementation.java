@@ -205,7 +205,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return questions;*/
     }
 
-    public int getAnswersSize(){
+    public int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
             return repository.getAnswersSize();
     }
 }

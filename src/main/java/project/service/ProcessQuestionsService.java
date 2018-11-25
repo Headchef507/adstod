@@ -20,5 +20,5 @@ public interface ProcessQuestionsService {
 
     int findPreviousQuestion(Question currq);
 
-    int getAnswersSize();
+    int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException;
 }
