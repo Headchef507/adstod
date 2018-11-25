@@ -51,7 +51,8 @@ public class SessionController {
             model.addAttribute("Question", q);
             x++;
         } else {
-            model.addAttribute("Question", processQuestionsService.findOne(processQuestionsService.findNextQuestion(q)));
+            q = processQuestionsService.findOne(processQuestionsService.findNextQuestion(q));
+            model.addAttribute("Question", q);
         }
         // Return the view
         return "/Question";
