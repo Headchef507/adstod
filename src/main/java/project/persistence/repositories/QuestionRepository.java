@@ -23,6 +23,7 @@ public class QuestionRepository {
     private String username = "kannski";
     private String password = "Kannski123";
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
+    private String language = "ICE";
 
     public void QuestionRepository() {
         //a loop to set the lists size at 16 (which is the current amount
@@ -72,7 +73,13 @@ public class QuestionRepository {
     public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
-        String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN optionsforanswersice o on q.ID = o.QuestionID JOIN optionsice o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        if(language == "ICE")
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        if(language == "ICE")
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsENG q JOIN OptionsForAnswersENG o on q.ID = o.QuestionID JOIN OptionsENG o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        if(language == "ICE")
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsPOL q JOIN OptionsForAnswersPOL o on q.ID = o.QuestionID JOIN OptionsPOL o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
         int x = 0;
@@ -98,6 +105,12 @@ public class QuestionRepository {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
         String stmt = "SELECT id FROM QuestionsICE ORDER BY ID DESC LIMIT 1;";
+        if(language == "ICE")
+            stmt = "SELECT id FROM QuestionsICE ORDER BY ID DESC LIMIT 1;";
+        if(language == "ENG")
+            stmt = "SELECT id FROM QuestionsENG ORDER BY ID DESC LIMIT 1;";
+        if(language == "POL")
+            stmt = "SELECT id FROM QuestionsPOL ORDER BY ID DESC LIMIT 1;";
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
         int c = 0;
@@ -105,6 +118,10 @@ public class QuestionRepository {
             c = r.getInt(1);
         return c;
     }
+
+    public String getLanguage(){ return this.language; }
+
+    public void setLanguage(String language){ this.language = language; }
 
     /**
      * Function processAnswers was/is intended to get the answers

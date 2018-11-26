@@ -18,7 +18,6 @@ public class Question implements Iterator<Question> {
     private String questionText;
     private String[] answerOptions;
     private int answer;
-    private String language;
 
     //PostitNote used an empty constructor, because we need to be able to create an empty PostitNote to add
     //to our model so we can use it with our form
@@ -56,14 +55,6 @@ public class Question implements Iterator<Question> {
     public String[] getAnswerOptions() { return answerOptions; }
 
     public void setAnswerOptions(String[] answerOptions) { this.answerOptions = answerOptions; }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
 
     //The following hasNext og Next eru til að ítra yfir allar spurningarnar
     @Override

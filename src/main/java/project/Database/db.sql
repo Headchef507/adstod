@@ -184,7 +184,7 @@ INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER14?", 6
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER15?", 6); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER16?", 6); -- Polish translation needed
 
--- Inserting all options for 2 questionText in icelandic
+-- Inserting all options for all questions in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Kvenkyns");
 INSERT INTO OptionsICE (OptionText) VALUES ("Annað");
@@ -214,7 +214,7 @@ INSERT INTO OptionsICE (OptionText) VALUES ("Hvorki né");
 INSERT INTO OptionsICE (OptionText) VALUES ("Frekar ósammála");
 INSERT INTO OptionsICE (OptionText) VALUES ("Mjög ósammála");
 
--- Inserting all options for 2 questionText in english
+-- Inserting all options for all questions in english
 INSERT INTO OptionsENG (OptionText) VALUES ("Male");
 INSERT INTO OptionsENG (OptionText) VALUES ("Female");
 INSERT INTO OptionsENG (OptionText) VALUES ("Other");
@@ -244,7 +244,7 @@ INSERT INTO OptionsENG (OptionText) VALUES ("Impartial");
 INSERT INTO OptionsENG (OptionText) VALUES ("Somewhat disagree");
 INSERT INTO OptionsENG (OptionText) VALUES ("Highly disagree");
 
--- Inserting all options for 2 questionText in polish
+-- Inserting all options for all questions in polish
 -- Translation needed
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHMale");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHFemale");
@@ -285,27 +285,7 @@ INSERT INTO PhoneNumbers(Number) VALUES ("+3545465645");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545656565");
 INSERT INTO PhoneNumbers(Number) VALUES ("+3545555555");
 
--- Inserting assistance resources
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Addi-kun", "addikun.is");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
-/*
--- Inserting results
-INSERT INTO Results(ResultTitle) VALUES ("Male gender");
-INSERT INTO Results(ResultTitle) VALUES ("Female gender");
-INSERT INTO Results(ResultTitle) VALUES ("Other gender");
-*/
--- Connecting phone numbers to assistance resources
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (2, 2);
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (3, 3);
-/*
--- Connecting assistance resources to results
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
-*/
--- Connecting the questions to options and the next questionText in line
+-- Connecting the questions to options and the next questionText in line - Icelandic
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 2);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 2);
@@ -363,6 +343,7 @@ INSERT INTO OptionsForAnswersICE (QuestionID, OptionID) VALUES (16, 26);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID) VALUES (16, 28);
 
+-- Connecting the questions to options and the next questionText in line - English
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 2);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 2);
@@ -420,6 +401,7 @@ INSERT INTO OptionsForAnswersENG (QuestionID, OptionID) VALUES (16, 26);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID) VALUES (16, 28);
 
+-- Connecting the questions to options and the next questionText in line - Polish
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 2);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 3, 2);
@@ -476,3 +458,24 @@ INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 25);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 26);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 28);
+
+-- Inserting assistance resources
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Addi-kun", "addikun.is");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
+/*
+-- Inserting results
+INSERT INTO Results(ResultTitle) VALUES ("Male gender");
+INSERT INTO Results(ResultTitle) VALUES ("Female gender");
+INSERT INTO Results(ResultTitle) VALUES ("Other gender");
+*/
+-- Connecting phone numbers to assistance resources
+INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
+INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (2, 2);
+INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (3, 3);
+/*
+-- Connecting assistance resources to results
+INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
+INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
+INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
+*/
