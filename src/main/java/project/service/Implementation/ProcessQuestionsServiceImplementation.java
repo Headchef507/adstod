@@ -25,7 +25,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     @Override
     public Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
-        if (id == 4 || id == 8) {
+        if (id == 4 || id == 9) {
             id += 2;
         }
         else {
