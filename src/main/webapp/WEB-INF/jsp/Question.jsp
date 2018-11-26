@@ -18,27 +18,24 @@
 
     <h1>Question ${Question.id}</h1>
 
-    <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
-    <%--that is added to the model that is passed to the view.--%>
-    <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
     <sf:form method="GET" modelAttribute="Question">
 
         <p>${Question.questionText}</p>
 
         <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
-            <input type="radio" id="${counter+1}"> ${Question.answerOptions[counter]}
+            <input type="radio" id="${counter+1}" onclick="enableNextButton()"> ${Question.answerOptions[counter]}
         </c:forEach>
 
         <c:if test="${Question.id > 1}">
-            <INPUT TYPE="submit" name="previous" VALUE="PREVIOUS" onclick="form.action='/PrevQuestion'">
+            <INPUT TYPE="submit" id="previous" VALUE="PREVIOUS" onclick="form.action='/PrevQuestion'">
         </c:if>
 
         <c:choose>
             <c:when test="${Question.id == QuestionCount}">
-                <INPUT TYPE="submit" name="finish" VALUE="FINISH" onclick="form.action='/Results'">
+                <INPUT TYPE="submit" id="finish" disabled="disabled" VALUE="FINISH" onclick="form.action='/Results'">
             </c:when>
             <c:otherwise>
-                <INPUT TYPE="submit" name="next" VALUE="NEXT" onclick="form.action='/NextQuestion'">
+                <INPUT TYPE="submit" id="next" disabled="disabled" VALUE="NEXT" onclick="form.action='/NextQuestion'">
             </c:otherwise>
         </c:choose>
 
