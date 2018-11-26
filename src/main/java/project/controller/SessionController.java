@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Question;
 import project.service.ProcessQuestionsService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 @Controller
@@ -33,31 +34,45 @@ public class SessionController {
 
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
     public String getInitialQuestion(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        numberOfQuestions = processQuestionsService.getAnswersSize();
-        model.addAttribute("QuestionCount", numberOfQuestions);
+        // Add the total number of questions to the view
+        this.numberOfQuestions = this.processQuestionsService.getAnswersSize();
+        model.addAttribute("QuestionCount", this.numberOfQuestions);
 
-        currentQuestion = processQuestionsService.findInitialQuestion();
-        model.addAttribute("Question", currentQuestion);
+        // Retrieve the initial question and add it to the view
+        this.currentQuestion = this.processQuestionsService.findInitialQuestion();
+        model.addAttribute("Question", this.currentQuestion);
 
         // Return the view
         return "/Question";
     }
 
     @RequestMapping (value = "/NextQuestion", method = RequestMethod.GET)
-    public String getNextQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        currentQuestion = processQuestionsService.findNextQuestion(currentQuestion.getId());
-        model.addAttribute("Question", currentQuestion);
-        model.addAttribute("QuestionCount", numberOfQuestions);
+    public String getNextQuestionFromID(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        // Add the total number of questions to the view
+        model.addAttribute("QuestionCount", this.numberOfQuestions);
 
+        // Retrieve the selected answer and save it
+        String selectedAnswer = request.getParameter("answer");
+        this.processQuestionsService.saveAnswers(this.currentQuestion, Integer.parseInt(selectedAnswer));
+
+        // Retrieve the next question and add it to the view
+        this.currentQuestion = this.processQuestionsService.findNextQuestion(this.currentQuestion.getId());
+        model.addAttribute("Question", this.currentQuestion);
+
+        // Return the view
         return "/Question";
     }
 
     @RequestMapping (value = "/PrevQuestion", method = RequestMethod.GET)
     public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        currentQuestion = processQuestionsService.findPreviousQuestion(currentQuestion.getId());
-        model.addAttribute("Question", currentQuestion);
-        model.addAttribute("QuestionCount", numberOfQuestions);
+        // Add the total number of questions to the view
+        model.addAttribute("QuestionCount", this.numberOfQuestions);
 
+        // Retrieve the previous question and add it to the view
+        this.currentQuestion = this.processQuestionsService.findPreviousQuestion(this.currentQuestion.getId());
+        model.addAttribute("Question", this.currentQuestion);
+
+        // Return the view
         return "/Question";
     }
 

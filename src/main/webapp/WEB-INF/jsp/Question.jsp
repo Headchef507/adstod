@@ -23,7 +23,7 @@
         <p>${Question.questionText}</p>
 
         <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
-            <input type="radio" id="${counter+1}" onclick="enableNextButton()"> ${Question.answerOptions[counter]}
+            <input type="radio" name="answer" value="${counter+1}" onclick="enableNextButton()"> ${Question.answerOptions[counter]}
         </c:forEach>
 
         <c:if test="${Question.id > 1}">
