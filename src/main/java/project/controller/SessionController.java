@@ -17,7 +17,7 @@ public class SessionController {
 
     // Initializing variables
     private ProcessQuestionsService processQuestionsService;
-    int x = 0;
+    private int currentQuestion = 0;
     Question q;
 
     // Constructor
@@ -40,24 +40,38 @@ public class SessionController {
 
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
     public String getQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        // Add a new Postit Note to the model for the form
-        // If you look at the form in PostitNotes.jsp, you can see that we
-        // reference this attribute there by the name `postitNote`.
-        //model.addAttribute("question",new Question());
-
-        // Here we get all the Postit Notes (in a reverse order) and add them to the model
-        if(x == 0) {
-            q = processQuestionsService.findOne(1);
-            model.addAttribute("Question", q);
+        if (currentQuestion == 0) {
             model.addAttribute("QuestionCount", processQuestionsService.getAnswersSize());
-            x++;
-        } else {
-            q = processQuestionsService.findOne(processQuestionsService.findNextQuestion(q));
-            model.addAttribute("Question", q);
+            currentQuestion++;
         }
+        q = processQuestionsService.findOne(currentQuestion);
+        model.addAttribute("Question", q);
 
         // Return the view
         return "/Question";
     }
+
+    @RequestMapping (value = "/NextQuestion", method = RequestMethod.GET)
+    public String getNextQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        currentQuestion++;
+        return getQuestionFromID(model);
+    }
+
+    @RequestMapping (value = "/PrevQuestion", method = RequestMethod.GET)
+    public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        if (currentQuestion != 1) {
+            currentQuestion--;
+        }
+        return getQuestionFromID(model);
+    }
+
+
+    @RequestMapping (value = "/Results", method = RequestMethod.GET)
+    public String getFinalQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+
+
+        return "/Results";
+    }
+
 
 }

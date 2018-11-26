@@ -9,14 +9,14 @@
 <html>
 
     <head>
-        <title>Question</title>
+        <title>Question ${Question.id}</title>
 
         <link rel="stylesheet" href="<c:url value="/css/Question.css"/>"/>
         <script src="<c:url value="/js/Question.js" />"></script>
     </head>
     <body>
 
-    <h1><a href="/Question">Question ${Question.id}</a></h1>
+    <h1>Question ${Question.id}</h1>
 
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
@@ -30,15 +30,15 @@
         </c:forEach>
 
         <c:if test="${Question.id > 1}">
-            <INPUT TYPE="submit" name="previous" VALUE="PREVIOUS" onclick="form.action='/Question'">
+            <INPUT TYPE="submit" name="previous" VALUE="PREVIOUS" onclick="form.action='/PrevQuestion'">
         </c:if>
 
         <c:choose>
             <c:when test="${Question.id == QuestionCount}">
-                <INPUT TYPE="submit" name="finish" VALUE="FINISH" onclick="form.action='/Question'">
+                <INPUT TYPE="submit" name="finish" VALUE="FINISH" onclick="form.action='/Results'">
             </c:when>
             <c:otherwise>
-                <INPUT TYPE="submit" name="next" VALUE="NEXT" onclick="form.action='/Question'">
+                <INPUT TYPE="submit" name="next" VALUE="NEXT" onclick="form.action='/NextQuestion'">
             </c:otherwise>
         </c:choose>
 
