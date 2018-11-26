@@ -18,6 +18,7 @@ public class SessionController {
     private ProcessQuestionsService processQuestionsService;
     private int currentQuestion = 0;
     private int numberOfQuestions = 2;
+    Question q = null;
 
     // Constructor
     @Autowired
@@ -39,7 +40,7 @@ public class SessionController {
         }
         model.addAttribute("QuestionCount", numberOfQuestions);
 
-        Question q = processQuestionsService.findOne(currentQuestion);
+        q = processQuestionsService.findOne(currentQuestion);
         model.addAttribute("Question", q);
 
         // Return the view
@@ -48,14 +49,16 @@ public class SessionController {
 
     @RequestMapping (value = "/NextQuestion", method = RequestMethod.GET)
     public String getNextQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        currentQuestion++;
+        //currentQuestion++;
+        currentQuestion = processQuestionsService.findNextQuestion(q);
         return getQuestionFromID(model);
     }
 
     @RequestMapping (value = "/PrevQuestion", method = RequestMethod.GET)
     public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         if (currentQuestion != 1) {
-            currentQuestion--;
+            //currentQuestion--;
+            currentQuestion = processQuestionsService.findPreviousQuestion(q);
         }
         return getQuestionFromID(model);
     }
