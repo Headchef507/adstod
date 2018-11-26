@@ -142,6 +142,18 @@ INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER2?", 5)
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hjúskaparstaða?", 3);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Relationship Status?", 3);
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER3?", 3); -- Polish translation needed
+INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hefurðu neytt áfengis?", 2);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you consumed alcohol?", 2);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER4?", 2); -- Polish translation needed
+INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Í síðast liðnum mánuði, hversu oft hefurðu neytt áfengis?", 5);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How often have you consumed alcohol in the last month?", 5);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER5?", 5); -- Polish translation needed
+INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hefur þú orðið fyrir andlegu eða líkamlegu ofbeldi af hálfu núverandi maka?", 2);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to mental or physical abuse by your current spouse?", 2);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER6?", 2); -- Polish translation needed
+INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hefur þú orðið fyrir andlegu eða líkamlegu ofbeldi af hálfu samstarfsaðila á síðast liðnum 2 mánuðum? \n (til dæmis einelti á vinnustað, hópþrýstingur í eitthvað sem þú sást eftir o.s.frv)", 2);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to mental or physical abuse by a coworker in the last 2 months?", 2);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER7?", 2); -- Polish translation needed
 
 -- Inserting all options for 2 questionText in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
@@ -155,6 +167,13 @@ INSERT INTO OptionsICE (OptionText) VALUES ("> 67");
 INSERT INTO OptionsICE (OptionText) VALUES ("Einhleypur");
 INSERT INTO OptionsICE (OptionText) VALUES ("Sambúð");
 INSERT INTO OptionsICE (OptionText) VALUES ("Kvænt/ur");
+INSERT INTO OptionsICE (OptionText) VALUES ("Já");
+INSERT INTO OptionsICE (OptionText) VALUES ("Nei");
+INSERT INTO OptionsICE (OptionText) VALUES ("Ekkert");
+INSERT INTO OptionsICE (OptionText) VALUES ("Einu sinni til tvisvar");
+INSERT INTO OptionsICE (OptionText) VALUES ("Þrisvar til fjórum sinnum");
+INSERT INTO OptionsICE (OptionText) VALUES ("Fjórum til sjö sinnum");
+INSERT INTO OptionsICE (OptionText) VALUES ("Oftar en átta sinnum");
 
 -- Inserting all options for 2 questionText in english
 INSERT INTO OptionsENG (OptionText) VALUES ("Male");
@@ -168,6 +187,13 @@ INSERT INTO OptionsENG (OptionText) VALUES ("> 67");
 INSERT INTO OptionsENG (OptionText) VALUES ("Single");
 INSERT INTO OptionsENG (OptionText) VALUES ("Living together");
 INSERT INTO OptionsENG (OptionText) VALUES ("Married");
+INSERT INTO OptionsENG (OptionText) VALUES ("Yes");
+INSERT INTO OptionsENG (OptionText) VALUES ("No");
+INSERT INTO OptionsENG (OptionText) VALUES ("Never");
+INSERT INTO OptionsENG (OptionText) VALUES ("Once or twice");
+INSERT INTO OptionsENG (OptionText) VALUES ("Three or four times");
+INSERT INTO OptionsENG (OptionText) VALUES ("Four to seven times");
+INSERT INTO OptionsENG (OptionText) VALUES ("More than eight times");
 
 -- Inserting all options for 2 questionText in polish
 -- Translation needed
@@ -182,6 +208,13 @@ INSERT INTO OptionsPOL (OptionText) VALUES ("> 67");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinhleypur");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHSambúð");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHKvænt/ur");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHJá");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHNei");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHEkkert");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinu sinni til tvisvar");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHÞrisvar til fjórum sinnum");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHFjórum til sjö sinnum");
+INSERT INTO OptionsPOL (OptionText) VALUES ("PHOftar en átta sinnum");
 /*
 -- Inserting all possible answer sets
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("1");
@@ -222,9 +255,20 @@ INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (2, 6, 3);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (2, 7, 3);
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (2, 8, 3);
-INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 1);
-INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 1);
-INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 1);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 4);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 4);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 4);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (4, 12, 5);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (4, 13, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (5, 14, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (5, 15, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (5, 16, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (5, 17, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (5, 18, 6);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (6, 12, 7);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (6, 13, 7);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (7, 12, 1);
+INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (7, 13, 1);
 
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 2);
@@ -234,9 +278,20 @@ INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (2, 6, 3);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (2, 7, 3);
 INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (2, 8, 3);
-INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 1);
-INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 1);
-INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 1);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 4);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 4);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 4);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (4, 12, 5);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (4, 13, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (5, 14, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (5, 15, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (5, 16, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (5, 17, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (5, 18, 6);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (6, 12, 7);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (6, 13, 7);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (7, 12, 1);
+INSERT INTO OptionsForAnswersENG (QuestionID, OptionID, NextQuestionID) VALUES (7, 13, 1);
 
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (1, 2, 2);
@@ -246,6 +301,17 @@ INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (2, 6, 3);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (2, 7, 3);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (2, 8, 3);
-INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 1);
-INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 1);
-INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 1);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 9, 4);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 10, 4);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (3, 11, 4);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (4, 12, 5);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (4, 13, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (5, 14, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (5, 15, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (5, 16, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (5, 17, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (5, 18, 6);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (6, 12, 7);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (6, 13, 7);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (7, 12, 1);
+INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID, NextQuestionID) VALUES (7, 13, 1);

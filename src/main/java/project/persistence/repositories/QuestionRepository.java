@@ -24,7 +24,7 @@ public class QuestionRepository {
     private String password = "Kannski123";
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
 
-    public void QuestionRepository() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
+    public void QuestionRepository() {
         //a loop to set the lists size at 16 (which is the current amount
         //of Questions.
         for(int i = 0; i < 16; i++) answers.add(q);
@@ -103,7 +103,6 @@ public class QuestionRepository {
         int c = 0;
         if(r.next())
             c = r.getInt(1);
-        System.out.println(c);
         return c;
     }
 
