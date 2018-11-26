@@ -16,6 +16,7 @@ public class QuestionRepository {
      * List of all questions that the user has answered
      * and the latest fetched question that the user is answering at the time
      */
+    private boolean islistInit = true;
     private List<Question> answers = null;
     private Question q;
     private List<Result> results = null;
@@ -25,10 +26,13 @@ public class QuestionRepository {
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
     private String language = "ICE";
 
-    public void QuestionRepository() {
+    public QuestionRepository() {
         //a loop to set the lists size at 16 (which is the current amount
         //of Questions.
-        for(int i = 0; i < 16; i++) answers.add(q);
+        String [] a = new String[1];
+        this.q = new Question(0, "", a, 0);
+        this.answers = new ArrayList<Question>();
+        //for(int i = 0; i < 16; i++) this.answers.add(b);
         /*try{
             conn = DriverManager.getConnection(url);
             System.out.println("null");
@@ -71,6 +75,16 @@ public class QuestionRepository {
      * Made now to get the program running
      */
     public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        if(islistInit) {
+            for (int y = 0; y<16; y++) {
+                this.answers.add(this.q);
+            }
+            this.islistInit = false;
+        }
+        //þetta er test til að athuga svörin í keyrslu
+        for (int j = 0; j < 5; j++) {
+            System.out.println(this.answers.get(j).getAnswer());
+        }
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
