@@ -34,7 +34,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     //This is where we receive the AssistanceResources and add theme to the list
     //the first one is the one that fits the most
     @Override
-    public List<Result> getResults() {
+    public List<AssistanceResource> getResults() {
         this.answeredQuestion = repository.getAnswers();
 
         AssistanceResource a = new AssistanceResource();
@@ -42,6 +42,8 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
                 answeredQuestion.get(5).getAnswer() == 1)
             //assistanceResources.add(repository.getResults());
             //this is how we want to work, it doesn´t cry, because to fix repository
+            assistanceResources.add(a);
+        if(true)
             assistanceResources.add(a);
 
 

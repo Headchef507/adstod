@@ -3,6 +3,8 @@ package project.persistence.repositories;
 // Imports needed
 import java.util.ArrayList;
 import java.util.List;
+
+import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
 import project.persistence.entities.Result;
 
@@ -19,7 +21,7 @@ public class QuestionRepository {
     private boolean initList = true;
     private List<Question> answers = null;
     private Question q;
-    private List<Result> results = null;
+    private List<AssistanceResource> results = null;
     private Connection conn = null;
     private String username = "kannski";
     private String password = "Kannski123";
@@ -32,6 +34,7 @@ public class QuestionRepository {
         String [] a = new String[1];
         this.q = new Question(0, "", a, 0);
         this.answers = new ArrayList<Question>();
+        this.results = new ArrayList<AssistanceResource>();
         //for(int i = 0; i < 16; i++) this.answers.add(b);
         /*try{
             conn = DriverManager.getConnection(url);
@@ -59,7 +62,7 @@ public class QuestionRepository {
      * and match them in the database to get a result/s for the user
      */
     //What Reults we want depends on the FetchReultsService
-    public List<Result> getResults() {
+    public List<AssistanceResource> getResults() {
         return this.results;
     }
 
