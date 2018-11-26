@@ -16,6 +16,7 @@ public class QuestionRepository {
      * List of all questions that the user has answered
      * and the latest fetched question that the user is answering at the time
      */
+    private boolean initList = true;
     private List<Question> answers = null;
     private Question q;
     private List<Result> results = null;
@@ -74,6 +75,14 @@ public class QuestionRepository {
      * Made now to get the program running
      */
     public Question findQuestion(Long id) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //Initialize list to get up the empty list to work with
+        if(initList){
+            for(int j = 0; j < getAnswersSize();j++){
+                this.answers.add(this.q);
+            }
+            this.initList = false;
+        }
+
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
