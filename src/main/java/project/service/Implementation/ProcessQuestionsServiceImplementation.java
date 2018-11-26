@@ -26,12 +26,13 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     @Override
     public Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if (id == 4 || id == 9) {
-            if(repository.getAnswers().get((int)id).getAnswer()==0)
+            if(repository.getAnswers().get((int)id).getAnswer()==2)
                 id += 2;
+            else
+                id += 1;
         }
-        else {
+        else
             id += 1;
-        }
         return this.repository.findQuestion(id);
     }
 
@@ -41,13 +42,14 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     @Override
     public Question findPreviousQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
-        if(id==6 || id==10){
-            if(repository.getAnswers().get((int)id).getAnswer()==0)
+        if(id==6 || id==11){
+            if(repository.getAnswers().get((int)id-2).getAnswer()==2)
                 id -= 2;
+            else
+                id -= 1;
         }
-        else {
+        else
             id -= 1;
-        }
         return this.repository.findQuestion(id);
     }
 
