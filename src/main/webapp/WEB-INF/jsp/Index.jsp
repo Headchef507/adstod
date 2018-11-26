@@ -16,13 +16,13 @@
 
     <p>Insert languages here</p>
     <ul>
-        <li><a href="/Question">START</a></li>
+        <li><a href="/Question">Íslenska</a></li>
     </ul>
     <ul>
-        <li><a href="/Question">START</a></li>
+        <li><a href="/Question">English</a></li>
     </ul>
     <ul>
-        <li><a href="/Question">START</a></li>
+        <li><a href="/Question">Polskie</a></li>
     </ul>
     </body>
     <footer>ASDF</footer>
