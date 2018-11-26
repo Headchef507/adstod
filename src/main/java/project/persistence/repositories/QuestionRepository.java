@@ -25,10 +25,13 @@ public class QuestionRepository {
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
     private String language = "ICE";
 
-    public void QuestionRepository() {
+    public QuestionRepository() {
         //a loop to set the lists size at 16 (which is the current amount
         //of Questions.
-        for(int i = 0; i < 16; i++) answers.add(q);
+        String [] a = new String[1];
+        this.q = new Question(0, "", a, 0);
+        this.answers = new ArrayList<Question>();
+        //for(int i = 0; i < 16; i++) this.answers.add(b);
         /*try{
             conn = DriverManager.getConnection(url);
             System.out.println("null");
