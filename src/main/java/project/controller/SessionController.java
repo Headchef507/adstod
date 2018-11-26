@@ -47,6 +47,7 @@ public class SessionController {
     public String getNextQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         currentQuestion = processQuestionsService.findNextQuestion(currentQuestion.getId());
         model.addAttribute("Question", currentQuestion);
+        model.addAttribute("QuestionCount", numberOfQuestions);
 
         return "/Question";
     }
@@ -55,6 +56,7 @@ public class SessionController {
     public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         currentQuestion = processQuestionsService.findPreviousQuestion(currentQuestion.getId());
         model.addAttribute("Question", currentQuestion);
+        model.addAttribute("QuestionCount", numberOfQuestions);
 
         return "/Question";
     }
