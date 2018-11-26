@@ -14,11 +14,11 @@ public interface ProcessQuestionsService {
 
     //int processAnswers(Question answers);
 
-    Question findOne(long i) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
+    Question findInitialQuestion() throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 
-    int findNextQuestion(Question answers);
+    Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 
-    int findPreviousQuestion(Question currq);
+    Question findPreviousQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException;
 
     int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException;
 }

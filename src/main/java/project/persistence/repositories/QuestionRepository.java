@@ -70,16 +70,16 @@ public class QuestionRepository {
      * Incomplete, query needs to be reworked
      * Made now to get the program running
      */
-    public Question findOne(Long i) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public Question findQuestion(Long id) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
-        String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+        String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         if(language == "ICE")
-            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         if(language == "ENG")
-            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsENG q JOIN OptionsForAnswersENG o on q.ID = o.QuestionID JOIN OptionsENG o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsENG q JOIN OptionsForAnswersENG o on q.ID = o.QuestionID JOIN OptionsENG o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         if(language == "POL")
-            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsPOL q JOIN OptionsForAnswersPOL o on q.ID = o.QuestionID JOIN OptionsPOL o2 on o.OptionID = o2.ID WHERE q.id = " + i.toString();
+            stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsPOL q JOIN OptionsForAnswersPOL o on q.ID = o.QuestionID JOIN OptionsPOL o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
         int x = 0;

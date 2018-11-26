@@ -16,9 +16,8 @@ public class SessionController {
 
     // Initializing variables
     private ProcessQuestionsService processQuestionsService;
-    private int currentQuestion = 0;
+    private Question currentQuestion = null;
     private int numberOfQuestions = 2;
-    Question q = null;
 
     // Constructor
     @Autowired
@@ -33,15 +32,12 @@ public class SessionController {
     }
 
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
-    public String getQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        if (currentQuestion == 0) {
-            numberOfQuestions = processQuestionsService.getAnswersSize();
-            currentQuestion++;
-        }
+    public String getInitialQuestion(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        numberOfQuestions = processQuestionsService.getAnswersSize();
         model.addAttribute("QuestionCount", numberOfQuestions);
 
-        q = processQuestionsService.findOne(currentQuestion);
-        model.addAttribute("Question", q);
+        currentQuestion = processQuestionsService.findInitialQuestion();
+        model.addAttribute("Question", currentQuestion);
 
         // Return the view
         return "/Question";
@@ -49,18 +45,18 @@ public class SessionController {
 
     @RequestMapping (value = "/NextQuestion", method = RequestMethod.GET)
     public String getNextQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        //currentQuestion++;
-        currentQuestion = processQuestionsService.findNextQuestion(q);
-        return getQuestionFromID(model);
+        currentQuestion = processQuestionsService.findNextQuestion(currentQuestion.getId());
+        model.addAttribute("Question", currentQuestion);
+
+        return "/Question";
     }
 
     @RequestMapping (value = "/PrevQuestion", method = RequestMethod.GET)
     public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        if (currentQuestion != 1) {
-            //currentQuestion--;
-            currentQuestion = processQuestionsService.findPreviousQuestion(q);
-        }
-        return getQuestionFromID(model);
+        currentQuestion = processQuestionsService.findPreviousQuestion(currentQuestion.getId());
+        model.addAttribute("Question", currentQuestion);
+
+        return "/Question";
     }
 
 
