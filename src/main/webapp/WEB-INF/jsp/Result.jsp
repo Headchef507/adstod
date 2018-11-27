@@ -23,22 +23,10 @@
     <p>${Question.questionText}</p>
 
     <c:forEach var="counter" begin="0" end="${fn:length(Resources)-1}">
-        <label type="radio" name="answer" value="${counter+1}"> ${Question.answerOptions[counter]}
+        <p>${Resources.get(0).getTitle()}</p><br/>
+        <p>${Resources.get(0).getLink()}</p><br/>
+        <p>${Resources.get(0).getDescription()}</p><br/>
     </c:forEach>
-
-    <c:if test="${Question.id > 1}">
-        <INPUT TYPE="submit" id="previous" VALUE="PREVIOUS" onclick="form.action='/PrevQuestion'">
-    </c:if>
-
-    <c:choose>
-        <c:when test="${Question.id == QuestionCount}">
-            <INPUT TYPE="submit" id="finish" disabled="disabled" VALUE="FINISH" onclick="form.action='/Results'">
-        </c:when>
-        <c:otherwise>
-            <INPUT TYPE="submit" id="next" disabled="disabled" VALUE="NEXT" onclick="form.action='/NextQuestion'">
-        </c:otherwise>
-    </c:choose>
-
 
 </sf:form>
 
