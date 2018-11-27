@@ -18,12 +18,14 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     private QuestionRepository repository = new QuestionRepository();
 
-
+    // Finds the initial question to start it all off
     @Override
     public Question findInitialQuestion() throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         return this.repository.findQuestion((long) 1);
     }
 
+    // Finds the next question after question number id
+    // If it's a jump question it checks whether you answered that
     @Override
     public Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if (id == 4 || id == 9) {
@@ -37,9 +39,8 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion(id);
     }
 
-    // Goes to the previous question
+    // Finds the previous question to question number id
     // If it a jump question previously, it checks whether you answered that
-
     @Override
     public Question findPreviousQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if(id==6 || id==11){
@@ -53,8 +54,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion(id);
     }
 
-    //The answer given will be saved in the entity Question and down in the Repo
-
+    // Receives the selected answer and stores it in the repository
     @Override
     public void saveAnswers(Question currentQuestion, int answer) {
         currentQuestion.setAnswer(answer);
