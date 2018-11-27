@@ -1,11 +1,66 @@
-body {
-    background-color: black;
+html {
+    background-color: #0A0D11;
+    font-size: 15px;
 }
 
-* {
-    color: white;
+body {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 h1 {
-    color: red;
+    color: #efedce;
+    text-transform: uppercase;
+}
+
+p {
+    color: #E1D7ED;
+}
+
+form {
+    width: 70%;
+}
+
+.radio-buttons {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.radio-button {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 3%;
+}
+
+.moveButtons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.moveButtons input {
+    background-color: #6CA27A;
+    border: black;
+    box-shadow: 0 5px 0 #36513d;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.moveButtons input:hover {
+    background-color: #406149;
+    cursor: pointer;
+}
+
+.moveButtons input:active {
+    box-shadow: none;
+    top: 5px;
 }

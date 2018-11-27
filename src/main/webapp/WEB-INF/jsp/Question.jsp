@@ -28,27 +28,32 @@
             <%-- Question text --%>
             <p>${Question.questionText}</p>
 
-            <div class="radio-button">
+            <ul class="radio-buttons">
                 <%-- Add a radio button for each answer option --%>
                 <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
-                    <input type="radio" name="answer" value="${counter+1}" onclick="enableNextButton()"> ${Question.answerOptions[counter]}
+                    <li class="radio-button">
+                        <input type="radio" name="answer" value="${counter+1}" onclick="enableNextButton()">
+                        <label>${Question.answerOptions[counter]}</label>
+                    </li>
                 </c:forEach>
+            </ul>
+
+            <div class="moveButtons">
+                <%-- Don't have a previous button on the first question --%>
+                <c:if test="${Question.id > 1}">
+                    <INPUT TYPE="submit" id = "previous" VALUE=<fmt:message key="label.previous"/> onclick="form.action='/PrevQuestion'">
+                </c:if>
+
+                <%-- Replaces next button with finish button on the last question --%>
+                <c:choose>
+                    <c:when test="${Question.id == QuestionCount}">
+                        <INPUT TYPE="submit" id = "finish" disabled="disabled" VALUE=<fmt:message key="label.finish"/> onclick="form.action='/Results'">
+                    </c:when>
+                    <c:otherwise>
+                        <INPUT TYPE="submit" id = "next" disabled="disabled" VALUE=<fmt:message key="label.next"/> onclick="form.action='/NextQuestion'">
+                    </c:otherwise>
+                </c:choose>
             </div>
-
-            <%-- Don't have a previous button on the first question --%>
-            <c:if test="${Question.id > 1}">
-                <INPUT TYPE="submit" id="previous" VALUE=<fmt:message key="label.previous"/> onclick="form.action='/PrevQuestion'">
-            </c:if>
-
-            <%-- Replaces next button with finish button on the last question --%>
-            <c:choose>
-                <c:when test="${Question.id == QuestionCount}">
-                    <INPUT TYPE="submit" id="finish" disabled="disabled" VALUE="FINISH" onclick="form.action='/Results'">
-                </c:when>
-                <c:otherwise>
-                    <INPUT TYPE="submit" id="next" disabled="disabled" VALUE=<fmt:message key="label.next"/> onclick="form.action='/NextQuestion'">
-                </c:otherwise>
-            </c:choose>
         </sf:form>
 
     </body>
