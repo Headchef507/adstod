@@ -14,7 +14,8 @@ import java.util.ListIterator;
 
 @Service
 public class ProcessQuestionsServiceImplementation implements ProcessQuestionsService {
-    private Question question = new Question();//bætti við þessu til að vinna í processAnswers
+
+
     private QuestionRepository repository = new QuestionRepository();
 
 
@@ -26,7 +27,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     @Override
     public Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if (id == 4 || id == 9) {
-            if(repository.getAnswers().get((int)id).getAnswer()==2)
+            if(this.repository.getAnswers().get((int)id).getAnswer()==2)
                 id += 2;
             else
                 id += 1;
@@ -36,14 +37,13 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion(id);
     }
 
-    //Goes to the previous question
-    //currentQuestion is the current question
-    //if it a jump question previously, it checks whether you answered that
+    // Goes to the previous question
+    // If it a jump question previously, it checks whether you answered that
 
     @Override
     public Question findPreviousQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if(id==6 || id==11){
-            if(repository.getAnswers().get((int)id-2).getAnswer()==2)
+            if(this.repository.getAnswers().get((int)id-2).getAnswer()==2)
                 id -= 2;
             else
                 id -= 1;
@@ -56,9 +56,9 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     //The answer given will be saved in the entity Question and down in the Repo
 
     @Override
-    public void saveAnswers(Question theQuestion, int theAnswer) { //return repository.save(answers);
-        theQuestion.setAnswer(theAnswer);                             //First í you set the Answer in the Question for later use
-        repository.saveAnswers((int)theQuestion.getId(),theQuestion);
+    public void saveAnswers(Question currentQuestion, int answer) {
+        currentQuestion.setAnswer(answer);
+        this.repository.saveAnswers((int)currentQuestion.getId(),currentQuestion);
     }
 
     //After the User answers a question, the answer will processed here.
@@ -86,10 +86,10 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
 
     public int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-            return repository.getAnswersSize();
+        return this.repository.getAnswersSize();
     }
 
-    public String getLanguage(){ return repository.getLanguage(); }
+    public String getLanguage(){ return this.repository.getLanguage(); }
 
-    public void setLanguage(String language){ repository.setLanguage(language); }
+    public void setLanguage(String language){ this.repository.setLanguage(language); }
 }
