@@ -26,17 +26,19 @@ public class SessionController {
 
     @RequestMapping (value = "/", method = RequestMethod.GET)
     public String home(){
-
         // The string "Index" that is returned here is the name of the view
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
           return "Index";
     }
 
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
-    public String getInitialQuestion(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public String getInitialQuestion(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        // Set the language as a session attribute
+        request.getSession().setAttribute("Language", request.getParameter("lang"));
+
         // Add the total number of questions to the view
         this.numberOfQuestions = this.processQuestionsService.getAnswersSize();
-        model.addAttribute("QuestionCount", this.numberOfQuestions);
+        request.getSession().setAttribute("QuestionCount", this.numberOfQuestions);
 
         // Retrieve the initial question and add it to the view
         this.currentQuestion = this.processQuestionsService.findInitialQuestion();
@@ -48,9 +50,6 @@ public class SessionController {
 
     @RequestMapping (value = "/NextQuestion", method = RequestMethod.GET)
     public String getNextQuestionFromID(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        // Add the total number of questions to the view
-        model.addAttribute("QuestionCount", this.numberOfQuestions);
-
         // Retrieve the selected answer and save it
         String selectedAnswer = request.getParameter("answer");
         this.processQuestionsService.saveAnswers(this.currentQuestion, Integer.parseInt(selectedAnswer));
@@ -65,9 +64,6 @@ public class SessionController {
 
     @RequestMapping (value = "/PrevQuestion", method = RequestMethod.GET)
     public String getPreviousQuestionFromID(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        // Add the total number of questions to the view
-        model.addAttribute("QuestionCount", this.numberOfQuestions);
-
         // Retrieve the previous question and add it to the view
         this.currentQuestion = this.processQuestionsService.findPreviousQuestion(this.currentQuestion.getId());
         model.addAttribute("Question", this.currentQuestion);

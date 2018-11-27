@@ -14,16 +14,15 @@
 
     <h1>Adstod</h1>
 
-    <p>Insert languages here</p>
+    <p>Veldu tungumál/Select a language/Wybierz język</p>
     <ul>
-        <li><a href="/Question">Íslenska</a></li>
+        <li><a href="/Question?lang=is">Íslenska</a></li>
     </ul>
     <ul>
-        <li><a href="/Question">English</a></li>
+        <li><a href="/Question?lang=en">English</a></li>
     </ul>
     <ul>
-        <li><a href="/Question">Polskie</a></li>
+        <li><a href="/Question?lang=pl">Polskie</a></li>
     </ul>
     </body>
-    <footer>ASDF</footer>
 </html>
