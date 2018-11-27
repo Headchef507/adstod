@@ -47,7 +47,7 @@
                 <%-- Replaces next button with finish button on the last question --%>
                 <c:choose>
                     <c:when test="${Question.id == QuestionCount}">
-                        <INPUT TYPE="submit" id = "finish" disabled="disabled" VALUE=<fmt:message key="label.finish"/> onclick="form.action='/Results'">
+                        <INPUT TYPE="submit" id = "next" disabled="disabled" VALUE=<fmt:message key="label.finish"/> onclick="form.action='/Results'">
                     </c:when>
                     <c:otherwise>
                         <INPUT TYPE="submit" id = "next" disabled="disabled" VALUE=<fmt:message key="label.next"/> onclick="form.action='/NextQuestion'">
