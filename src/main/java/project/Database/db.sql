@@ -163,13 +163,13 @@ INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subj
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to mental or physical abuse by a coworker/s in the last 2 months?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to severe mental or physical abuse by a parent, sibling or other family member in the last 2 months?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you used drugs (heroin or strong pain meidcation, kannabis, amfetamin, cocaine, mushrooms or other comparable substances) in the last 2 months?", 2);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How often have you used drugs in the last month", 5);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How often have you used drugs in the last month", 6);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Do you feel oppressed in the community due to your origin?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Has anyone close to you died in the last 2 months?", 2);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt sad in the last 2 months'?", 6);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have considered suicide in the last 2 months'?", 6);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt lonely in the last 2 months'?", 6);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt unhappy in one or more of my relationships in the last 2 months'?", 6);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt sad in the last 2 months'?", 5);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have considered suicide in the last 2 months'?", 5);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt lonely in the last 2 months'?", 5);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt unhappy in one or more of my relationships in the last 2 months'?", 5);
 
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER1?", 3); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER2?", 5); -- Polish translation needed
@@ -180,13 +180,13 @@ INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER6?", 2)
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER7?", 2); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER8?", 2); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER9?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER10?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER10?", 6); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER11?", 2); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER12?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER13?", 6); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER14?", 6); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER15?", 6); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER16?", 6); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER13?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER14?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER15?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER16?", 5); -- Polish translation needed
 
 -- Inserting all options for all questions in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
