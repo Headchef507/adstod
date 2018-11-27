@@ -3,12 +3,14 @@ package project.controller;
 // Imports needed
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.Question;
 import project.persistence.entities.Result;
 import project.service.FetchResultsService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -21,6 +23,14 @@ public class ResultsController {
     @Autowired
     public ResultsController(FetchResultsService fetchResultsService) {
         this.fetchResultsService = fetchResultsService;
+    }
+
+
+    @RequestMapping (value = "/Results", method = RequestMethod.GET)
+    public String getResults(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+
+
+        return "/Results";
     }
 
     // Function to get results
