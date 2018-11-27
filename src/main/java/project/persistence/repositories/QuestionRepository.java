@@ -61,9 +61,38 @@ public class QuestionRepository {
      * Function getResults was/is intended to take the answers at the end
      * and match them in the database to get a result/s for the user
      */
-    //What Reults we want depends on the FetchReultsService
-    public List<AssistanceResource> getResults() {
-        return this.results;
+    //What Results we want depends on the FetchResultsService
+    public AssistanceResource getResult(Long id) throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException {
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection(url, username, password);
+        String stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesICE a JOIN PhoneNumbersForResourcesICE p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
+        if(language.equals("ICE"))
+            stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesICE a JOIN PhoneNumbersForResourcesICE p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
+        else if(language.equals("ENG"))
+            stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesENG a JOIN PhoneNumbersForResourcesENG p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = = " + id.toString();
+        else if(language.equals("POL"))
+            stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesPOL a JOIN PhoneNumbersForResourcesPOL p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
+        Statement prep = conn.createStatement();
+        ResultSet r = prep.executeQuery(stmt2);
+        int x = 0;
+        AssistanceResource a = new AssistanceResource();
+        if(r.next()) {
+            x = r.getInt(6);
+        }
+        String[] nums = new String[x];
+        nums[0] = r.getString(4);
+        a.setId(r.getLong(1));
+        a.setTitle(r.getString(2));
+        a.setLink(r.getString(3));
+        a.setDescription(r.getString(5));
+        int j = 1;
+        while(r.next()){
+            nums[j] = r.getString(4);
+            j++;
+        }
+        a.setPhNumbers(nums);
+        conn.close();
+        return a;
     }
 
     //The function sends into FetchResults the list of questions with their answers

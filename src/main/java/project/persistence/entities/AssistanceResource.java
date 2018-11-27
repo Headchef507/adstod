@@ -21,18 +21,17 @@ public class AssistanceResource {
     private String title;
     private String link;
     private String description;
-
-    //private String[] phNumbers;
+    private String[] phNumbers;
 
     public AssistanceResource(){
 
     }
-    public AssistanceResource(long id, String title, String link, String description){
+    public AssistanceResource(long id, String title, String link, String[] phNumbers, String description){
         this.id = id;
         this.title = title;
         this.link = link;
         this.description = description;
-        //this.phNumbers = phNumbers;
+        this.phNumbers = phNumbers;
     }
 
     //Getter and setter for the Id of the Assistance resource
@@ -54,12 +53,12 @@ public class AssistanceResource {
     public String getDescription() {return this.description; }
 
     public void setDescription(String description){ this.description = description; }
-/*
+
     //Several phone numbers of the institution and it´s employees (if it is provided)
     public String[] getPhNumbers() { return phNumbers; }
 
     public void setPhNumbers(String[] phNumbers) { this.phNumbers = phNumbers; }
-*/
+
     //This is for easier debug in PostitNote
     /*
     @Override

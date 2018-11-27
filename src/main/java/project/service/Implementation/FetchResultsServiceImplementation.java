@@ -8,6 +8,7 @@ import project.persistence.entities.Result;
 import project.persistence.repositories.QuestionRepository;
 import project.service.FetchResultsService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class FetchResultsServiceImplementation implements FetchResultsService {
 
     // Instance Variables
-    private QuestionRepository repository;              //to contact the repository
+    private QuestionRepository repository = new QuestionRepository();              //to contact the repository
     private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them
     private List<AssistanceResource> assistanceResources = new ArrayList<>(); //List of all of the
 
@@ -35,15 +36,15 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     //This is where we receive the AssistanceResources and add theme to the list
     //the first one is the one that fits the most
     @Override
-    public List<AssistanceResource> getResults() {
+    public List<AssistanceResource> getResults() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         //this.answeredQuestion = repository.getAnswers();
-
-        AssistanceResource a = new AssistanceResource(1, "Test result", "http://test.com", "Test description"); //test entity for debugging
+        long id = 2;
+        AssistanceResource a = repository.getResult(id); //test entity for debugging
         /*if (answeredQuestion.get(0).getAnswer() == 1 ||
                 answeredQuestion.get(5).getAnswer() == 1)*/
             //assistanceResources = repository.getResults();
             //this is how we want to work, it doesn´t cry, because to fix repository
-            assistanceResources.add(a);
+        assistanceResources.add(a);
         /*if(true)
             assistanceResources.add(a);*/
 
