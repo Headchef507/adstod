@@ -42,15 +42,20 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         long id = 2;
         AssistanceResource a = repository.getResult(id); //test entity for debugging
 
+        //In all following comments above if statements:
+        //AR = Assistance Resource
+
         //If true, this will add the AR "Kvennathvarf"
         if (answeredQuestion.get(0).getAnswer() == 1 &&
                 answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)1));
 
+        //If true, this will add the AR "Stigamót"
         if(answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)2));
 
-        if(true)
+        //If true, this will ad the AR "Frú Ragnheiður"
+        if(answeredQuestion.get(5).getAnswer() > 3 && answeredQuestion.get(10).getAnswer() > 3)
             assistanceResources.add(repository.getResult((long)3));
 
         if(true)
