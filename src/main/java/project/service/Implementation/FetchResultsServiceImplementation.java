@@ -58,14 +58,16 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         if(answeredQuestion.get(5).getAnswer() > 3 && answeredQuestion.get(10).getAnswer() > 3)
             assistanceResources.add(repository.getResult((long)3));
 
-        //If true, the will add the AR "Heimsóknarvinur"
+        //If true, this will add the AR "Heimsóknarvinur"
         if(answeredQuestion.get(2).getAnswer() == 5 && answeredQuestion.get(15).getAnswer() > 3) //you can add all of the "Hversu vel á eftirfarandi"
             assistanceResources.add(repository.getResult((long)4));
 
-        if(true)
+        //If true, this will add the AR "Heilahristingur"
+        if(answeredQuestion.get(2).getAnswer() == 1 && answeredQuestion.get(11).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)5));
 
-        if(true)
+        //If nothing is chosen, then the default AR "Þjónustumiðstöð Laugardals og Háaleitis" will be sent to the user
+        else
             assistanceResources.add(repository.getResult((long)6)); //default Assistance Resource
 
 
