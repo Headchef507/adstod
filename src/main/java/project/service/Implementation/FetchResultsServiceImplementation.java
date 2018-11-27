@@ -54,11 +54,12 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         if(answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)2));
 
-        //If true, this will ad the AR "Frú Ragnheiður"
+        //If true, this will add the AR "Frú Ragnheiður"
         if(answeredQuestion.get(5).getAnswer() > 3 && answeredQuestion.get(10).getAnswer() > 3)
             assistanceResources.add(repository.getResult((long)3));
 
-        if(true)
+        //If true, the will add the AR "Heimsóknarvinur"
+        if(answeredQuestion.get(2).getAnswer() == 5 && answeredQuestion.get(15).getAnswer() > 3) //you can add all of the "Hversu vel á eftirfarandi"
             assistanceResources.add(repository.getResult((long)4));
 
         if(true)
