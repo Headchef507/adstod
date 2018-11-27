@@ -16,7 +16,7 @@ import java.util.ListIterator;
 public class ProcessQuestionsServiceImplementation implements ProcessQuestionsService {
 
 
-    private QuestionRepository repository = new QuestionRepository();
+    private QuestionRepository repository = QuestionRepository.getInstance();
 
     // Finds the initial question to start it all off
     @Override

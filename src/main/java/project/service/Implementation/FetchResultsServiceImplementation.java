@@ -1,6 +1,7 @@
 package project.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
@@ -16,7 +17,7 @@ import java.util.List;
 public class FetchResultsServiceImplementation implements FetchResultsService {
 
     // Instance Variables
-    private QuestionRepository repository = new QuestionRepository();              //to contact the repository
+    private QuestionRepository repository = QuestionRepository.getInstance();              //to contact the repository
     private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them
     private List<AssistanceResource> assistanceResources = new ArrayList<>(); //List of all of the
 

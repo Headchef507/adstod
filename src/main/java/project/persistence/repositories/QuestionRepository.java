@@ -4,6 +4,7 @@ package project.persistence.repositories;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
 import project.persistence.entities.Result;
@@ -12,7 +13,9 @@ import java.sql.*;
 
 import javax.persistence.*;
 
+@Repository
 public class QuestionRepository {
+    private static QuestionRepository repository = null;
 
     /**
      * List of all questions that the user has answered
@@ -47,6 +50,12 @@ public class QuestionRepository {
         }*/
     }
 
+    public static QuestionRepository getInstance(){
+        if(repository == null)
+            repository = new QuestionRepository();
+        return repository;
+    }
+
     /**
      * Function saveAnswers was/is intended to save an answer that the user
      * makes into the answers List above
@@ -69,7 +78,7 @@ public class QuestionRepository {
         if(language.equals("ICE"))
             stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesICE a JOIN PhoneNumbersForResourcesICE p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
         else if(language.equals("ENG"))
-            stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesENG a JOIN PhoneNumbersForResourcesENG p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = = " + id.toString();
+            stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesENG a JOIN PhoneNumbersForResourcesENG p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
         else if(language.equals("POL"))
             stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesPOL a JOIN PhoneNumbersForResourcesPOL p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
         Statement prep = conn.createStatement();
