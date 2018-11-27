@@ -497,6 +497,7 @@ INSERT INTO PhoneNumbersForResourcesICE(AssistanceResourceID, PhoneNumberID) VAL
 INSERT INTO PhoneNumbersForResourcesICE(AssistanceResourceID, PhoneNumberID) VALUES (3, 4);
 INSERT INTO PhoneNumbersForResourcesICE(AssistanceResourceID, PhoneNumberID) VALUES (4, 5);
 INSERT INTO PhoneNumbersForResourcesICE(AssistanceResourceID, PhoneNumberID) VALUES (5, 6);
+INSERT INTO PhoneNumbersForResourcesICE(AssistanceResourceID, PhoneNumberID) VALUES (6, 7);
 
 INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (1, 1);
 INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (2, 2);
@@ -504,6 +505,7 @@ INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VAL
 INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (3, 4);
 INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (4, 5);
 INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (5, 6);
+INSERT INTO PhoneNumbersForResourcesENG(AssistanceResourceID, PhoneNumberID) VALUES (6, 7);
 
 INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (1, 1);
 INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (2, 2);
@@ -511,3 +513,4 @@ INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VAL
 INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (3, 4);
 INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (4, 5);
 INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (5, 6);
+INSERT INTO PhoneNumbersForResourcesPOL(AssistanceResourceID, PhoneNumberID) VALUES (6, 7);
