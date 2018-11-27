@@ -37,13 +37,6 @@ public class ResultsController {
         return "/Result";
     }
 
-    // Function to get results
-    // Incomplete
-    @RequestMapping (value = "/result", method = RequestMethod.GET)
-    public void getResultsBasedOnAnswers(List<Question> answers) {
-
-    }
-
     //@RequestMapping (value = "/result", method = RequestMethod.GET) //Throws error
     public List<Result> getOtherPossibleResults(List<Question> answers) {
         return null;
