@@ -41,6 +41,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         this.answeredQuestion = repository.getAnswers();
         long id = 2;
         AssistanceResource a = repository.getResult(id); //test entity for debugging
+
         if (answeredQuestion.get(0).getAnswer() == 1 &&
                 answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)1));
@@ -49,11 +50,20 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
 
         /*if(true)
             assistanceResources.add(a);*/
-        assistanceResources.add(repository.getResult((long)2));
-        assistanceResources.add(repository.getResult((long)3));
-        assistanceResources.add(repository.getResult((long)4));
-        assistanceResources.add(repository.getResult((long)5));
-        assistanceResources.add(repository.getResult((long)6)); //default Assistance Resource
+        if(true)
+            assistanceResources.add(repository.getResult((long)2));
+
+        if(true)
+            assistanceResources.add(repository.getResult((long)3));
+
+        if(true)
+            assistanceResources.add(repository.getResult((long)4));
+
+        if(true)
+            assistanceResources.add(repository.getResult((long)5));
+        
+        if(true)
+            assistanceResources.add(repository.getResult((long)6)); //default Assistance Resource
 
 
 
