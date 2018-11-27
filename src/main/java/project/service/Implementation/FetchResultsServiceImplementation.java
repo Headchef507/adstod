@@ -42,15 +42,12 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         long id = 2;
         AssistanceResource a = repository.getResult(id); //test entity for debugging
 
+        //If true, this will add the AR "Kvennathvarf"
         if (answeredQuestion.get(0).getAnswer() == 1 &&
                 answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)1));
-            //assistanceResources = repository.getResults();
-            //this is how we want to work, it doesn´t cry, because to fix repository
 
-        /*if(true)
-            assistanceResources.add(a);*/
-        if(true)
+        if(answeredQuestion.get(5).getAnswer() == 1)
             assistanceResources.add(repository.getResult((long)2));
 
         if(true)
@@ -61,7 +58,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
 
         if(true)
             assistanceResources.add(repository.getResult((long)5));
-        
+
         if(true)
             assistanceResources.add(repository.getResult((long)6)); //default Assistance Resource
 
