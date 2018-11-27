@@ -17,5 +17,17 @@
 
 <h1>Results</h1>
 
+<sf:form method="GET" modelAttribute="Resources">
+
+    <p>${Question.questionText}</p>
+
+    <c:forEach var="counter" begin="0" end="${fn:length(Resources)-1}">
+        <p>${Resources.get(0).getTitle()}</p><br/>
+        <p>${Resources.get(0).getLink()}</p><br/>
+        <p>${Resources.get(0).getDescription()}</p><br/>
+    </c:forEach>
+
+</sf:form>
+
 </body>
 </html>

@@ -8,6 +8,7 @@ import project.persistence.entities.Result;
 import project.persistence.repositories.QuestionRepository;
 import project.service.FetchResultsService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,7 +17,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     // Instance Variables
     private QuestionRepository repository;              //to contact the repository
     private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them
-    private List<AssistanceResource> assistanceResources; //List of all of the
+    private List<AssistanceResource> assistanceResources = new ArrayList<>(); //List of all of the
 
 
     //This is the constructor
@@ -35,12 +36,12 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
     //the first one is the one that fits the most
     @Override
     public List<AssistanceResource> getResults() {
-        this.answeredQuestion = repository.getAnswers();
+        //this.answeredQuestion = repository.getAnswers();
 
-        AssistanceResource a = new AssistanceResource();
-        if (answeredQuestion.get(0).getAnswer() == 1 ||
-                answeredQuestion.get(5).getAnswer() == 1)
-            assistanceResources = repository.getResults();
+        AssistanceResource a = new AssistanceResource(1, "Test result", "http://test.com", "Test description"); //test entity for debugging
+        /*if (answeredQuestion.get(0).getAnswer() == 1 ||
+                answeredQuestion.get(5).getAnswer() == 1)*/
+            //assistanceResources = repository.getResults();
             //this is how we want to work, it doesn´t cry, because to fix repository
             assistanceResources.add(a);
         /*if(true)
@@ -48,7 +49,7 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
 
 
 
-        return this.repository.getResults(); //here comes the default AssistanceResource
+        return assistanceResources; //here comes the default AssistanceResource
     }
 
 

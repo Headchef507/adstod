@@ -19,22 +19,19 @@ public class AssistanceResource {
     private long id;
 
     private String title;
-
-    /**
-     * Column link in database is defined as TEXT, string generally changes to VARCHAR in SQL.
-     * This line forces the column definition to change to TEXT
-     */
-    @Column(columnDefinition = "TEXT")
     private String link;
+    private String description;
 
     //private String[] phNumbers;
 
     public AssistanceResource(){
 
     }
-    public AssistanceResource(String title, String link, String[] phNumbers){
+    public AssistanceResource(long id, String title, String link, String description){
+        this.id = id;
         this.title = title;
         this.link = link;
+        this.description = description;
         //this.phNumbers = phNumbers;
     }
 
@@ -53,6 +50,10 @@ public class AssistanceResource {
     public String getLink() { return link; }
 
     public void setLink(String link) { this.link = link; }
+
+    public String getDescription() {return this.description; }
+
+    public void setDescription(String description){ this.description = description; }
 /*
     //Several phone numbers of the institution and it´s employees (if it is provided)
     public String[] getPhNumbers() { return phNumbers; }
