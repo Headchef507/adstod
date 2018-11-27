@@ -1,0 +1,21 @@
+html {
+    background-color: #0A0D11;
+    font-size: 15px;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #efedce;
+    text-transform: uppercase;
+}
+
+p {
+    color: #E1D7ED;
+}
