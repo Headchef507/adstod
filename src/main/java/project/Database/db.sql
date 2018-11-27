@@ -42,7 +42,7 @@ CREATE TABLE OptionsPOL(                     # Table holding all possible answer
 
 CREATE TABLE PhoneNumbers(                # Table holding phone numbers for all assistance resources
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  Number VARCHAR(11) NOT NULL
+  Number VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE AssistanceResources(         # Table holding names and links of all assistance resources that can pop up in results
@@ -280,10 +280,6 @@ INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("1");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("2");
 INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("3");
 */
--- Inserting phone numbers for assistance resources
-INSERT INTO PhoneNumbers(Number) VALUES ("+3545465645");
-INSERT INTO PhoneNumbers(Number) VALUES ("+3545656565");
-INSERT INTO PhoneNumbers(Number) VALUES ("+3545555555");
 
 -- Connecting the questions to options and the next questionText in line - Icelandic
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
@@ -460,19 +456,32 @@ INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 28);
 
 -- Inserting assistance resources
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Addi-kun", "addikun.is");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Atli-chan", "atlichan.com");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Tommi-san", "tommisan.po");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Kvennaathvarf", "https://www.kvennaathvarf.is");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/");
+INSERT INTO AssistanceResources(Title, Link) VALUES ("Heimsóknarvinir", "https://www.raudikrossinn.is/hvad-gerum-vid/adstod-i-bodi/heimsoknarvinur/");
+
+-- Inserting phone numbers for assistance resources
+INSERT INTO PhoneNumbers(Number) VALUES ("5611205");
+INSERT INTO PhoneNumbers(Number) VALUES ("5626868");
+INSERT INTO PhoneNumbers(Number) VALUES ("8006868");
+INSERT INTO PhoneNumbers(Number) VALUES ("7887123");
+INSERT INTO PhoneNumbers(Number) VALUES ("Panta símatíma á vefsíðunni");
+
 /*
 -- Inserting results
 INSERT INTO Results(ResultTitle) VALUES ("Male gender");
 INSERT INTO Results(ResultTitle) VALUES ("Female gender");
 INSERT INTO Results(ResultTitle) VALUES ("Other gender");
 */
+
 -- Connecting phone numbers to assistance resources
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (1, 1);
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (2, 2);
-INSERT INTO PhoneNumbersForResources(PhoneNumberID, AssistanceResourceID) VALUES (3, 3);
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (1, 1);
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (2, 2);
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (2, 3);
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (3, 4);
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (4, 5);
+
 /*
 -- Connecting assistance resources to results
 INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);

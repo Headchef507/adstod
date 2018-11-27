@@ -77,12 +77,4 @@ public class SessionController {
     }
 
 
-    @RequestMapping (value = "/Results", method = RequestMethod.GET)
-    public String getResults(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-
-
-        return "/Results";
-    }
-
-
 }
