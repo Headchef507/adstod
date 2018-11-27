@@ -33,8 +33,10 @@ public class SessionController {
 
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
     public String getInitialQuestion(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
-        // Set the language as a session attribute
-        request.getSession().setAttribute("Language", request.getParameter("lang"));
+        // Set the selected language
+        String language = request.getParameter("lang");
+        request.getSession().setAttribute("Language", language);
+        this.processQuestionsService.setLanguage(language);
 
         // Add the total number of questions to the view
         this.numberOfQuestions = this.processQuestionsService.getAnswersSize();
