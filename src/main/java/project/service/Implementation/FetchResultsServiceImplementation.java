@@ -40,11 +40,11 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
         AssistanceResource a = new AssistanceResource();
         if (answeredQuestion.get(0).getAnswer() == 1 ||
                 answeredQuestion.get(5).getAnswer() == 1)
-            //assistanceResources.add(repository.getResults());
+            assistanceResources = repository.getResults();
             //this is how we want to work, it doesn´t cry, because to fix repository
             assistanceResources.add(a);
-        if(true)
-            assistanceResources.add(a);
+        /*if(true)
+            assistanceResources.add(a);*/
 
 
 

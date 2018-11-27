@@ -34,7 +34,7 @@ public class SessionController {
     @RequestMapping (value = "/Question", method = RequestMethod.GET)
     public String getInitialQuestion(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         // Set the selected language
-        String language = request.getParameter("lang");
+        int language = Integer.parseInt(request.getParameter("lang"));
         request.getSession().setAttribute("Language", language);
         this.processQuestionsService.setLanguage(language);
 

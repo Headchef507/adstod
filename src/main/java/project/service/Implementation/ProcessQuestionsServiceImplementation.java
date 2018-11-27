@@ -89,7 +89,7 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.getAnswersSize();
     }
 
-    public String getLanguage(){ return this.repository.getLanguage(); }
+    public int getLanguage(){ return this.repository.getLanguage(); }
 
-    public void setLanguage(String language){ this.repository.setLanguage(language); }
+    public void setLanguage(int language){ this.repository.setLanguage(language); }
 }

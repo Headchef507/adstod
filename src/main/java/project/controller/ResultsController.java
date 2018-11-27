@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
 import project.persistence.entities.Result;
 import project.service.FetchResultsService;
@@ -18,6 +19,7 @@ public class ResultsController {
 
     // Instance Variables
     private FetchResultsService fetchResultsService;
+    private List<AssistanceResource> assistanceResources;
 
     // Dependency Injection
     @Autowired
@@ -28,9 +30,11 @@ public class ResultsController {
 
     @RequestMapping (value = "/Results", method = RequestMethod.GET)
     public String getResults(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+        this.assistanceResources = fetchResultsService.getResults();
 
+        model.addAttribute("Resources", assistanceResources);
 
-        return "/Results";
+        return "/Result";
     }
 
     // Function to get results

@@ -45,55 +45,56 @@ CREATE TABLE PhoneNumbers(                # Table holding phone numbers for all 
   Number VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE AssistanceResources(         # Table holding names and links of all assistance resources that can pop up in results
+CREATE TABLE AssistanceResourcesICE(         # Table holding names and links of all assistance resources that can pop up in results - Icelandic
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   Title VARCHAR(255) NOT NULL,
-  Link TEXT NOT NULL
+  Link TEXT NOT NULL,
+  Description TEXT NOT NULL
 );
 
-/*
-CREATE TABLE Results(                   # Table holding all possible results from answer sets
+CREATE TABLE AssistanceResourcesENG(         # Table holding names and links of all assistance resources that can pop up in results - English
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResultTitle VARCHAR(255) NOT NULL
+  Title VARCHAR(255) NOT NULL,
+  Link TEXT NOT NULL,
+  Description TEXT NOT NULL
 );
-*/
-/*
-CREATE TABLE AnswerSets(                  # Table holding all answer sets possible for matching with results
+
+CREATE TABLE AssistanceResourcesPOL(         # Table holding names and links of all assistance resources that can pop up in results - Polish
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  AnswerOptionSet TEXT NOT NULL,
-  ResultID BIGINT(20),
-  CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID)
+  Title VARCHAR(255) NOT NULL,
+  Link TEXT NOT NULL,
+  Description TEXT NOT NULL
 );
-*/
+
 /**
- * This table connects the PhoneNumbers table to the AssistanceResources table
+ * This table connects the PhoneNumbers table to the AssistanceResources tables
  * Each assistance resource can have many phone numbers
  * Each phone number can belong to multiple assistance resources
  * This makes the connection table useful for reducing redundant data
  */
-CREATE TABLE PhoneNumbersForResources(
+CREATE TABLE PhoneNumbersForResourcesICE(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
   PhoneNumberID BIGINT(20) NOT NULL,
   AssistanceResourceID BIGINT(20) NOT NULL,
   CONSTRAINT FOREIGN KEY (PhoneNumberID) REFERENCES PhoneNumbers(ID),
-  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
+  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResourcesICE(ID)
 );
 
-/*
- * This table connects the AssistanceResources table to the Results table
- * Each assistance resource can pop up in multiple results
- * Each result can point to one or more assistance resources
- * This makes the connection table useful for reducing redundant data
- */
-/*
-CREATE TABLE ResourcesForResults(
+CREATE TABLE PhoneNumbersForResourcesENG(
   ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-  ResultID BIGINT(20) NOT NULL,
+  PhoneNumberID BIGINT(20) NOT NULL,
   AssistanceResourceID BIGINT(20) NOT NULL,
-  CONSTRAINT FOREIGN KEY (ResultID) REFERENCES Results(ID),
-  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResources(ID)
+  CONSTRAINT FOREIGN KEY (PhoneNumberID) REFERENCES PhoneNumbers(ID),
+  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResourcesENG(ID)
 );
-*/
+
+CREATE TABLE PhoneNumbersForResourcesPOL(
+  ID BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+  PhoneNumberID BIGINT(20) NOT NULL,
+  AssistanceResourceID BIGINT(20) NOT NULL,
+  CONSTRAINT FOREIGN KEY (PhoneNumberID) REFERENCES PhoneNumbers(ID),
+  CONSTRAINT FOREIGN KEY (AssistanceResourceID) REFERENCES AssistanceResourcesPOL(ID)
+);
 
 /*
  * These tables connect the Options tables to the Questions tables
@@ -456,10 +457,26 @@ INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 28);
 
 -- Inserting assistance resources
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Kvennaathvarf", "https://www.kvennaathvarf.is");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/");
-INSERT INTO AssistanceResources(Title, Link) VALUES ("Heimsóknarvinir", "https://www.raudikrossinn.is/hvad-gerum-vid/adstod-i-bodi/heimsoknarvinur/");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Kvennaathvarf", "https://www.kvennaathvarf.is", "Stofnfundur Samtaka um kvennaathvarf var haldinn 2. júní 1982. Þar var ákveðið að opna athvarf fyrir konur sem ekki gætu búið heima hjá sér vegna ofbeldis og 6. desember sama ár var Kvennaathvarfið opnað. Samtök um kvennaathvarf voru í upphafi grasrótarsamtök en árið 1995 var horfið frá því fyrirkomulagi og mynduð formleg samtök. Árið 2010 var stofnuð sjálfseignarstofnun um húseign Kvennaathvarfsins en rekstur athvarfsins hélst óbreyttur.");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot", "Meginmarkmiðin með stofnun Stígamóta eru annars vegar að þau séu staður, sem konur og karlar, sem beitt hafa verið kynferðisofbeldi, geti leitað til, fengið stuðning og deilt reynslu sinni með öðrum, sem einnig hafa verið beittir slíku ofbeldi eða þekkja það vel. Með kynferðisofbeldi er, auk sifjaspella, nauðgana og kynferðislegrar áreitni, einnig átt við klám, vændi og mansal enda er það reynsla Stígamóta jafnt og annarra kvennasamtaka í heiminum að það tekur langan tíma að vinna úr þeirri erfiðu ofbeldisreynslu sem vændi er og að klám er ein birtingarmynd vændis. Mansal er nútíma þrælasala, og algengasta form mansals er mansal til kynlífsþjónustu. ");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "Frú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Heimsóknarvinir", "https://www.raudikrossinn.is/hvad-gerum-vid/adstod-i-bodi/heimsoknarvinur/", "Heimsóknavinir eru sjálfboðaliðar sem heimsækja fólk á heimili þess, á stofnanir, sambýli og dvalar- og hjúkrunarheimili. Misjafnt er hvað felst í heimsókn en það getur t.d. verið spjall, gönguferð, ökuferð, upplestur, aðstoð við handavinnu og svo framvegis.  Beiðnir eru breytilegar, en reynt er að mæta þörfum og óskum gestgjafanna  eins og kostur er. Viðmið er að heimsóknartími sé um klukkustund einu sinni í viku. Hvenær og hvar heimsóknin á sér stað er samkomulagsatriði hjá gestgjafa og heimsóknavini.");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Heilahristingur", "https://www.raudikrossinn.is/hvad-gerum-vid/heilahristingur/", "Heilahristingur er heimanámsaðstoð fyrir grunnskólanema frá 4.-10 bekk sem og framhaldsskólanema á höfuðborgarsvæðinu. Áhersla er lögð á að virkja nemendur í námi og hafa það skemmtilegt saman. Markmiðið er að styðja og styrkja nemendur í námi en samhliða því fái þeir tækifæri til að kynnast þeirri þjónustu sem bókasöfn bjóða upp á í tengslum við nám, áhugamál, tómstundir o.fl.");
+INSERT INTO AssistanceResourcesICE(Title, Link, Description) VALUES ("Engin niðurstaða", "https://reykjavik.is/stadir/thjonustumidstod-laugardals-og-haaleitis", "Því miður þá höfum við ekki til staðar þjónustu sem hentar þínum valkostum til þessa. Hins vegar, ef þér finnst að eitthvað sé að valda þér áhyggjum eða ert í vanda. Vinsamlegast hafðu samband við þjónustu miðstöð í þínu hverfi og biddu um ráðgjöf.");
+
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("The Women's Shelter", "https://www.kvennaathvarf.is", "The Women’s Shelter was established on June 2nd 1982. It was decided on the inaugural meeting to open a shelter for women who were not able to stay in their own homes due to violence. On December the 6th on the same year the Women’s Shelter was opened.");
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot", "Free individual counseling for survivors of rape, sexual molestation, sexual harassment, pornographic exploitation and prostitution. Service is for women and men. Services for children are offered by Children’s Protective Services (Barnahús).Teenagers under the age of 18 are welcome once a report has been filed with the Children’s Protective Services. In the event a report has not been filed, please be aware that according to Icelandic law we must report any instances of sexual abuse of a minor, suspected or otherwise. Questions can be sent by email or information requested by phone.");
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "Frú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.");
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("Heimsóknarvinir", "https://www.raudikrossinn.is/hvad-gerum-vid/adstod-i-bodi/heimsoknarvinur/", "Heimsóknavinir eru sjálfboðaliðar sem heimsækja fólk á heimili þess, á stofnanir, sambýli og dvalar- og hjúkrunarheimili. Misjafnt er hvað felst í heimsókn en það getur t.d. verið spjall, gönguferð, ökuferð, upplestur, aðstoð við handavinnu og svo framvegis.  Beiðnir eru breytilegar, en reynt er að mæta þörfum og óskum gestgjafanna  eins og kostur er. Viðmið er að heimsóknartími sé um klukkustund einu sinni í viku. Hvenær og hvar heimsóknin á sér stað er samkomulagsatriði hjá gestgjafa og heimsóknavini.");
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("Heilahristingur", "https://www.raudikrossinn.is/hvad-gerum-vid/heilahristingur/", "Heilahristingur er heimanámsaðstoð fyrir grunnskólanema frá 4.-10 bekk sem og framhaldsskólanema á höfuðborgarsvæðinu. Áhersla er lögð á að virkja nemendur í námi og hafa það skemmtilegt saman. Markmiðið er að styðja og styrkja nemendur í námi en samhliða því fái þeir tækifæri til að kynnast þeirri þjónustu sem bókasöfn bjóða upp á í tengslum við nám, áhugamál, tómstundir o.fl.");
+INSERT INTO AssistanceResourcesENG(Title, Link, Description) VALUES ("No Result", "https://reykjavik.is/stadir/thjonustumidstod-laugardals-og-haaleitis", "Því miður þá höfum við ekki til staðar þjónustu sem hentar þínum valkostum til þessa. Hins vegar, ef þér finnst að eitthvað sé að valda þér áhyggjum eða ert í vanda. Vinsamlegast hafðu samband við þjónustu miðstöð í þínu hverfi og biddu um ráðgjöf.");
+
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHKvennaathvarf", "https://www.kvennaathvarf.is", "PHStofnfundur Samtaka um kvennaathvarf var haldinn 2. júní 1982. Þar var ákveðið að opna athvarf fyrir konur sem ekki gætu búið heima hjá sér vegna ofbeldis og 6. desember sama ár var Kvennaathvarfið opnað. Samtök um kvennaathvarf voru í upphafi grasrótarsamtök en árið 1995 var horfið frá því fyrirkomulagi og mynduð formleg samtök. Árið 2010 var stofnuð sjálfseignarstofnun um húseign Kvennaathvarfsins en rekstur athvarfsins hélst óbreyttur.");
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHStígamót", "https://www.stigamot.is/is/um-stigamot", "PHMeginmarkmiðin með stofnun Stígamóta eru annars vegar að þau séu staður, sem konur og karlar, sem beitt hafa verið kynferðisofbeldi, geti leitað til, fengið stuðning og deilt reynslu sinni með öðrum, sem einnig hafa verið beittir slíku ofbeldi eða þekkja það vel. Með kynferðisofbeldi er, auk sifjaspella, nauðgana og kynferðislegrar áreitni, einnig átt við klám, vændi og mansal enda er það reynsla Stígamóta jafnt og annarra kvennasamtaka í heiminum að það tekur langan tíma að vinna úr þeirri erfiðu ofbeldisreynslu sem vændi er og að klám er ein birtingarmynd vændis. Mansal er nútíma þrælasala, og algengasta form mansals er mansal til kynlífsþjónustu. ");
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHFrú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "PHFrú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.");
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHHeimsóknarvinir", "https://www.raudikrossinn.is/hvad-gerum-vid/adstod-i-bodi/heimsoknarvinur/", "PHHeimsóknavinir eru sjálfboðaliðar sem heimsækja fólk á heimili þess, á stofnanir, sambýli og dvalar- og hjúkrunarheimili. Misjafnt er hvað felst í heimsókn en það getur t.d. verið spjall, gönguferð, ökuferð, upplestur, aðstoð við handavinnu og svo framvegis.  Beiðnir eru breytilegar, en reynt er að mæta þörfum og óskum gestgjafanna  eins og kostur er. Viðmið er að heimsóknartími sé um klukkustund einu sinni í viku. Hvenær og hvar heimsóknin á sér stað er samkomulagsatriði hjá gestgjafa og heimsóknavini.");
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHHeilahristingur", "https://www.raudikrossinn.is/hvad-gerum-vid/heilahristingur/", "PHHeilahristingur er heimanámsaðstoð fyrir grunnskólanema frá 4.-10 bekk sem og framhaldsskólanema á höfuðborgarsvæðinu. Áhersla er lögð á að virkja nemendur í námi og hafa það skemmtilegt saman. Markmiðið er að styðja og styrkja nemendur í námi en samhliða því fái þeir tækifæri til að kynnast þeirri þjónustu sem bókasöfn bjóða upp á í tengslum við nám, áhugamál, tómstundir o.fl.");
+INSERT INTO AssistanceResourcesPOL(Title, Link, Description) VALUES ("PHEngin niðurstaða", "https://reykjavik.is/stadir/thjonustumidstod-laugardals-og-haaleitis", "PHÞví miður þá höfum við ekki til staðar þjónustu sem hentar þínum valkostum til þessa. Hins vegar, ef þér finnst að eitthvað sé að valda þér áhyggjum eða ert í vanda. Vinsamlegast hafðu samband við þjónustu miðstöð í þínu hverfi og biddu um ráðgjöf.");
 
 -- Inserting phone numbers for assistance resources
 INSERT INTO PhoneNumbers(Number) VALUES ("5611205");
@@ -467,13 +484,8 @@ INSERT INTO PhoneNumbers(Number) VALUES ("5626868");
 INSERT INTO PhoneNumbers(Number) VALUES ("8006868");
 INSERT INTO PhoneNumbers(Number) VALUES ("7887123");
 INSERT INTO PhoneNumbers(Number) VALUES ("Panta símatíma á vefsíðunni");
-
-/*
--- Inserting results
-INSERT INTO Results(ResultTitle) VALUES ("Male gender");
-INSERT INTO Results(ResultTitle) VALUES ("Female gender");
-INSERT INTO Results(ResultTitle) VALUES ("Other gender");
-*/
+INSERT INTO PhoneNumbers(Number) VALUES ("5704000");
+INSERT INTO PhoneNumbers(Number) VALUES ("4111500");
 
 -- Connecting phone numbers to assistance resources
 INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (1, 1);
@@ -481,10 +493,4 @@ INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES
 INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (2, 3);
 INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (3, 4);
 INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (4, 5);
-
-/*
--- Connecting assistance resources to results
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (1, 1);
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (2, 2);
-INSERT INTO ResourcesForResults(ResultID, AssistanceResourceID) VALUES (3, 3);
-*/
+INSERT INTO PhoneNumbersForResources(AssistanceResourceID, PhoneNumberID) VALUES (5, 6);
