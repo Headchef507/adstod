@@ -21,7 +21,7 @@ public interface ProcessQuestionsService {
 
     int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException;
 
-    int getLanguage();
+    String getLanguage();
 
-    void setLanguage(int language);
+    void setLanguage(String language);
 }

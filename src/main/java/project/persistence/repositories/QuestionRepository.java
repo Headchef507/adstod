@@ -26,7 +26,7 @@ public class QuestionRepository {
     private String username = "kannski";
     private String password = "Kannski123";
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
-    private int language = 1;
+    private String language = "ICE";
 
     public QuestionRepository() {
         //a loop to set the lists size at 16 (which is the current amount
@@ -88,13 +88,12 @@ public class QuestionRepository {
 
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
-        System.out.println(language == 1);
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
-        if(language == 1)
+        if(language.equals("ICE"))
             stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
-        else if(language == 2)
+        else if(language.equals("ENG"))
             stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsENG q JOIN OptionsForAnswersENG o on q.ID = o.QuestionID JOIN OptionsENG o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
-        else if(language == 3)
+        else if(language.equals("POL"))
             stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsPOL q JOIN OptionsForAnswersPOL o on q.ID = o.QuestionID JOIN OptionsPOL o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
@@ -121,11 +120,11 @@ public class QuestionRepository {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
         String stmt = "SELECT id FROM QuestionsICE ORDER BY ID DESC LIMIT 1;";
-        if(language == 1)
+        if(language.equals("ICE"))
             stmt = "SELECT id FROM QuestionsICE ORDER BY ID DESC LIMIT 1;";
-        if(language == 2)
+        else if(language.equals("ENG"))
             stmt = "SELECT id FROM QuestionsENG ORDER BY ID DESC LIMIT 1;";
-        if(language == 3)
+        else if(language.equals("POL"))
             stmt = "SELECT id FROM QuestionsPOL ORDER BY ID DESC LIMIT 1;";
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
@@ -135,9 +134,9 @@ public class QuestionRepository {
         return c;
     }
 
-    public int getLanguage(){ return this.language; }
+    public String getLanguage(){ return this.language; }
 
-    public void setLanguage(int language){ this.language = language; }
+    public void setLanguage(String language){ this.language = language; }
 
     /**
      * Function processAnswers was/is intended to get the answers

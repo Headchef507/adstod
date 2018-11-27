@@ -16,13 +16,13 @@
 
     <p>Veldu tungumál/Select a language/Wybierz język</p>
     <ul>
-        <li><a href="/Question?lang=1">Íslenska</a></li>
+        <li><a href="/Question?lang=ICE">Íslenska</a></li>
     </ul>
     <ul>
-        <li><a href="/Question?lang=2">English</a></li>
+        <li><a href="/Question?lang=ENG">English</a></li>
     </ul>
     <ul>
-        <li><a href="/Question?lang=3">Polskie</a></li>
+        <li><a href="/Question?lang=POL">Polskie</a></li>
     </ul>
     </body>
 </html>
