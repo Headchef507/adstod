@@ -59,14 +59,4 @@ public class AssistanceResource {
 
     public void setPhNumbers(String[] phNumbers) { this.phNumbers = phNumbers; }
 
-    //This is for easier debug in PostitNote
-    /*
-    @Override
-    public String toString(){
-        return String.format(
-               "Postit Note[name=%s, note=%s]",
-                name,note);
-    }
-    */
-
 }
