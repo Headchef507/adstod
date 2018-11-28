@@ -19,8 +19,7 @@
 
 <sf:form method="GET" modelAttribute="Resources">
 
-    <p>${Question.questionText}</p>
-
+    <%-- Gets and shows the results --%>
     <c:forEach var="counter" begin="0" end="${fn:length(Resources)-1}">
         <p>${Resources.get(counter).getTitle()}</p><br/>
         <a href="${Resources.get(counter).getLink()}">${Resources.get(counter).getLink()}</a><br/>

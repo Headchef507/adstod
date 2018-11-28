@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<%-- An error page if something happens --%>
 <h1>ERROR ERROR</h1>
 <p>You done fucked up</p>
 <%= exception %>
