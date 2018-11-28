@@ -33,8 +33,8 @@
                 <%-- Add a radio button for each answer option --%>
                 <c:forEach var="counter" begin="0" end="${fn:length(Question.answerOptions)-1}">
                     <li class="radio-button">
-                        <input type="radio" name="answer" value="${counter+1}" onclick="enableNextButton()">
-                        <label>${Question.answerOptions[counter]}</label>
+                        <input type="radio" class="radio-butt" name="answer" value="${counter+1}" id="radio${counter+1}" onclick="enableNextButton()">
+                        <label for="radio${counter+1}" class="label">${Question.answerOptions[counter]}</label>
                     </li>
                 </c:forEach>
             </ul>
