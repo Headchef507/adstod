@@ -1,6 +1,5 @@
 package project.controller;
 
-// Imports needed
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,9 @@ import project.service.FetchResultsService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * ResultsController uses FetchResultsService to get results from the database based on answers in the repository
+ */
 @Controller
 public class ResultsController {
 
@@ -27,7 +29,7 @@ public class ResultsController {
         this.fetchResultsService = fetchResultsService;
     }
 
-
+    // Function mapped to the /Results page at the end of the questionnaire
     @RequestMapping (value = "/Results", method = RequestMethod.GET)
     public String getResults(Model model) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         this.assistanceResources = fetchResultsService.getResults();
@@ -36,11 +38,4 @@ public class ResultsController {
 
         return "/Result";
     }
-
-    //@RequestMapping (value = "/result", method = RequestMethod.GET) //Throws error
-    public List<Result> getOtherPossibleResults(List<Question> answers) {
-        return null;
-    }
-
-
 }

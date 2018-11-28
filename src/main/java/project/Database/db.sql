@@ -136,7 +136,7 @@ CREATE TABLE OptionsForAnswersPOL(
 );
 
 -- Inserts
--- Inserting 2 questionText in every language
+-- Inserting questions in icelandic
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Kyn?", 3);
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Aldursbil?", 5);
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hjúskaparstaða?", 3);
@@ -154,6 +154,7 @@ INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hversu vel á efti
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hversu vel á eftirfarandi fullyrðing við um þig: \n -'Ég hef fundið fyrir einmanaleika á síðustu 2 mánuðum'?", 5);
 INSERT INTO QuestionsICE (QuestionText, OptionCount) VALUES ("Hversu vel á eftirfarandi fullyrðing við um þig: \n -'Ég hef fundið fyrir óánægju í einu eða fleirum af mínum samböndum á síðustu 2 mánuðum'?", 5);
 
+-- Inserting questions in english
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Gender?", 3);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Age range?", 5);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Relationship Status?", 3);
@@ -171,6 +172,7 @@ INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the 
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt lonely in the last 2 months'?", 5);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt unhappy in one or more of my relationships in the last 2 months'?", 5);
 
+-- Inserting questions in polish
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER1?", 3); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER2?", 5); -- Polish translation needed
 INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER3?", 3); -- Polish translation needed
@@ -278,12 +280,6 @@ INSERT INTO OptionsPOL (OptionText) VALUES ("PHFrekar sammála");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHHvorki né");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHFrekar ósammála");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHMjög ósammála");
-/*
--- Inserting all possible answer sets
-INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("1");
-INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("2");
-INSERT INTO AnswerSets (AnswerOptionSet) VALUES ("3");
-*/
 
 -- Connecting the questions to options and the next questionText in line - Icelandic
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
@@ -459,7 +455,7 @@ INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 26);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 27);
 INSERT INTO OptionsForAnswersPOL (QuestionID, OptionID) VALUES (16, 28);
 
--- Inserting assistance resources
+-- Inserting assistance resources in icelandic
 INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) VALUES ("Kvennaathvarf", "https://www.kvennaathvarf.is", "Stofnfundur Samtaka um kvennaathvarf var haldinn 2. júní 1982. Þar var ákveðið að opna athvarf fyrir konur sem ekki gætu búið heima hjá sér vegna ofbeldis og 6. desember sama ár var Kvennaathvarfið opnað. Samtök um kvennaathvarf voru í upphafi grasrótarsamtök en árið 1995 var horfið frá því fyrirkomulagi og mynduð formleg samtök. Árið 2010 var stofnuð sjálfseignarstofnun um húseign Kvennaathvarfsins en rekstur athvarfsins hélst óbreyttur.", 1);
 INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot", "Meginmarkmiðin með stofnun Stígamóta eru annars vegar að þau séu staður, sem konur og karlar, sem beitt hafa verið kynferðisofbeldi, geti leitað til, fengið stuðning og deilt reynslu sinni með öðrum, sem einnig hafa verið beittir slíku ofbeldi eða þekkja það vel. Með kynferðisofbeldi er, auk sifjaspella, nauðgana og kynferðislegrar áreitni, einnig átt við klám, vændi og mansal enda er það reynsla Stígamóta jafnt og annarra kvennasamtaka í heiminum að það tekur langan tíma að vinna úr þeirri erfiðu ofbeldisreynslu sem vændi er og að klám er ein birtingarmynd vændis. Mansal er nútíma þrælasala, og algengasta form mansals er mansal til kynlífsþjónustu. ", 2);
 INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "Frú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.", 1);
@@ -467,6 +463,7 @@ INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) V
 INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) VALUES ("Heilahristingur", "https://www.raudikrossinn.is/hvad-gerum-vid/heilahristingur/", "Heilahristingur er heimanámsaðstoð fyrir grunnskólanema frá 4.-10 bekk sem og framhaldsskólanema á höfuðborgarsvæðinu. Áhersla er lögð á að virkja nemendur í námi og hafa það skemmtilegt saman. Markmiðið er að styðja og styrkja nemendur í námi en samhliða því fái þeir tækifæri til að kynnast þeirri þjónustu sem bókasöfn bjóða upp á í tengslum við nám, áhugamál, tómstundir o.fl.", 1);
 INSERT INTO AssistanceResourcesICE(Title, Link, Description, PhoneNumberCount) VALUES ("Engin niðurstaða", "https://reykjavik.is/stadir/thjonustumidstod-laugardals-og-haaleitis", "Því miður þá höfum við ekki til staðar þjónustu sem hentar þínum valkostum til þessa. Hins vegar, ef þér finnst að eitthvað sé að valda þér áhyggjum eða ert í vanda. Vinsamlegast hafðu samband við þjónustu miðstöð í þínu hverfi og biddu um ráðgjöf.", 1);
 
+-- Inserting assistance resources in english
 INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) VALUES ("The Women's Shelter", "https://www.kvennaathvarf.is", "The Women’s Shelter was established on June 2nd 1982. It was decided on the inaugural meeting to open a shelter for women who were not able to stay in their own homes due to violence. On December the 6th on the same year the Women’s Shelter was opened.", 1);
 INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) VALUES ("Stígamót", "https://www.stigamot.is/is/um-stigamot", "Free individual counseling for survivors of rape, sexual molestation, sexual harassment, pornographic exploitation and prostitution. Service is for women and men. Services for children are offered by Children’s Protective Services (Barnahús).Teenagers under the age of 18 are welcome once a report has been filed with the Children’s Protective Services. In the event a report has not been filed, please be aware that according to Icelandic law we must report any instances of sexual abuse of a minor, suspected or otherwise. Questions can be sent by email or information requested by phone.", 2);
 INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) VALUES ("Frú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "Frú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.", 1);
@@ -474,6 +471,7 @@ INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) V
 INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) VALUES ("Heilahristingur", "https://www.raudikrossinn.is/hvad-gerum-vid/heilahristingur/", "Heilahristingur er heimanámsaðstoð fyrir grunnskólanema frá 4.-10 bekk sem og framhaldsskólanema á höfuðborgarsvæðinu. Áhersla er lögð á að virkja nemendur í námi og hafa það skemmtilegt saman. Markmiðið er að styðja og styrkja nemendur í námi en samhliða því fái þeir tækifæri til að kynnast þeirri þjónustu sem bókasöfn bjóða upp á í tengslum við nám, áhugamál, tómstundir o.fl.", 1);
 INSERT INTO AssistanceResourcesENG(Title, Link, Description, PhoneNumberCount) VALUES ("No Result", "https://reykjavik.is/stadir/thjonustumidstod-laugardals-og-haaleitis", "Því miður þá höfum við ekki til staðar þjónustu sem hentar þínum valkostum til þessa. Hins vegar, ef þér finnst að eitthvað sé að valda þér áhyggjum eða ert í vanda. Vinsamlegast hafðu samband við þjónustu miðstöð í þínu hverfi og biddu um ráðgjöf.", 1);
 
+-- Inserting assistance resources in polish
 INSERT INTO AssistanceResourcesPOL(Title, Link, Description, PhoneNumberCount) VALUES ("PHKvennaathvarf", "https://www.kvennaathvarf.is", "PHStofnfundur Samtaka um kvennaathvarf var haldinn 2. júní 1982. Þar var ákveðið að opna athvarf fyrir konur sem ekki gætu búið heima hjá sér vegna ofbeldis og 6. desember sama ár var Kvennaathvarfið opnað. Samtök um kvennaathvarf voru í upphafi grasrótarsamtök en árið 1995 var horfið frá því fyrirkomulagi og mynduð formleg samtök. Árið 2010 var stofnuð sjálfseignarstofnun um húseign Kvennaathvarfsins en rekstur athvarfsins hélst óbreyttur.", 1);
 INSERT INTO AssistanceResourcesPOL(Title, Link, Description, PhoneNumberCount) VALUES ("PHStígamót", "https://www.stigamot.is/is/um-stigamot", "PHMeginmarkmiðin með stofnun Stígamóta eru annars vegar að þau séu staður, sem konur og karlar, sem beitt hafa verið kynferðisofbeldi, geti leitað til, fengið stuðning og deilt reynslu sinni með öðrum, sem einnig hafa verið beittir slíku ofbeldi eða þekkja það vel. Með kynferðisofbeldi er, auk sifjaspella, nauðgana og kynferðislegrar áreitni, einnig átt við klám, vændi og mansal enda er það reynsla Stígamóta jafnt og annarra kvennasamtaka í heiminum að það tekur langan tíma að vinna úr þeirri erfiðu ofbeldisreynslu sem vændi er og að klám er ein birtingarmynd vændis. Mansal er nútíma þrælasala, og algengasta form mansals er mansal til kynlífsþjónustu. ", 2);
 INSERT INTO AssistanceResourcesPOL(Title, Link, Description, PhoneNumberCount) VALUES ("PHFrú Ragnheiður", "https://www.raudikrossinn.is/hvad-gerum-vid/fru-ragnheidur/", "PHFrú Ragnheiður – skaðaminnkun  er verkefni sem hefur það markmið að ná til jaðarsetta hópa í samfélaginu eins og heimilislausra einstaklinga og einstaklinga sem nota vímuefni um æð. Frú Ragnheiður er sérinnréttaður bíll sem er ekið um götur höfuðborgarsvæðisins á kvöldin, sex kvöld í viku.", 1);

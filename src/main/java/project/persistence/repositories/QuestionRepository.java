@@ -1,27 +1,23 @@
 package project.persistence.repositories;
 
-// Imports needed
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
 import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
-import project.persistence.entities.Result;
-
 import java.sql.*;
 
-import javax.persistence.*;
-
+/**
+ * The repository, used to access the database, is created as a Singleton in order to have one instance
+ * active across the session.
+ * For simplicity on our part when working in our relational MySQL database,
+ * we decided to create the repository in a more brute-force JDBC way
+ * Therefore, we do not create this as an interface implementing JpaRepository
+ */
 @Repository
 public class QuestionRepository {
-    private static QuestionRepository repository = null;
-
-    /**
-     * List of all questions that the user has answered
-     * and the latest fetched question that the user is answering at the time
-     */
-    private boolean initList = true;
+    private static QuestionRepository repository = null;                    // Initilizing the repo as a singleton
+    private boolean initList = true;                                        // Boolean used for initializing the list
     private List<Question> answers = null;
     private Question q;
     private List<AssistanceResource> results = null;
@@ -31,25 +27,18 @@ public class QuestionRepository {
     private String url = "jdbc:mysql://localhost:3306/adstodQuestions";
     private String language = "ICE";
 
+    // Normally in a Singleton class the constructor is private but Spring throws an error if that is the case
     public QuestionRepository() {
-        //a loop to set the lists size at 16 (which is the current amount
-        //of Questions.
         String [] a = new String[1];
         this.q = new Question(0, "", a, 0);
         this.answers = new ArrayList<Question>();
         this.results = new ArrayList<AssistanceResource>();
-        //for(int i = 0; i < 16; i++) this.answers.add(b);
-        /*try{
-            conn = DriverManager.getConnection(url);
-            System.out.println("null");
-        } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }*/
     }
 
+    /**
+     * Creates a new instance of the repository and makes it accessible to all parts of the project
+     * @return the repository instance
+     */
     public static QuestionRepository getInstance(){
         if(repository == null)
             repository = new QuestionRepository();
@@ -57,49 +46,55 @@ public class QuestionRepository {
     }
 
     /**
-     * Function saveAnswers was/is intended to save an answer that the user
-     * makes into the answers List above
-     * Incomplete
+     * Sets answer as the answer part of a Question entity at position theId in the List<Question> answers
      */
     public void saveAnswers(int theId, Question answer){
         this.answers.set(theId, answer);
-
     }
 
     /**
-     * Function getResults was/is intended to take the answers at the end
-     * and match them in the database to get a result/s for the user
+     * Returns an AssistanceResource from the database with the ID Long id
      */
-    //What Results we want depends on the FetchResultsService
     public AssistanceResource getResult(Long id) throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
+
+        // Default statement in case the if statements below fail
         String stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesICE a JOIN PhoneNumbersForResourcesICE p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
-        if(language.equals("ICE"))
+        if(language.equals("ICE")) // If the language is set to icelandic
             stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesICE a JOIN PhoneNumbersForResourcesICE p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
-        else if(language.equals("ENG"))
+        else if(language.equals("ENG")) // If the language is set to english
             stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesENG a JOIN PhoneNumbersForResourcesENG p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
-        else if(language.equals("POL"))
+        else if(language.equals("POL")) // If the language is set to polish
             stmt2 = "SELECT a.ID, a.Title, a.Link, p.Number, a.Description, a.PhoneNumberCount FROM AssistanceResourcesPOL a JOIN PhoneNumbersForResourcesPOL p2 ON a.ID = p2.AssistanceResourceID JOIN PhoneNumbers p ON p.ID = p2.PhoneNumberID WHERE a.ID = " + id.toString();
+
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt2);
-        int x = 0;
+
+        // Getting the amount of phone numbers available for the AssistanceResource to initialize the array
+        int numberOfPhoneNumbers = 0;
         AssistanceResource a = new AssistanceResource();
         if(r.next()) {
-            x = r.getInt(6);
+            numberOfPhoneNumbers = r.getInt(6);
         }
-        String[] nums = new String[x];
+        String[] nums = new String[numberOfPhoneNumbers];
+
+        // Setting the first few variables
         nums[0] = r.getString(4);
         a.setId(r.getLong(1));
         a.setTitle(r.getString(2));
         a.setLink(r.getString(3));
         a.setDescription(r.getString(5));
+
+        // Run through the rest of the results (if there are any) and fill the phone number array
         int j = 1;
         while(r.next()){
             nums[j] = r.getString(4);
             j++;
         }
         a.setPhNumbers(nums);
+
+        // Close the connection and return the assistanceResource object
         conn.close();
         return a;
     }
@@ -111,12 +106,12 @@ public class QuestionRepository {
     }
 
     /**
-     * Basic query made to inject into function findOne
-     * Incomplete, query needs to be reworked
-     * Made now to get the program running
+     * Gets a question with the ID Long id from the database
+     * @param id
+     * @return
      */
     public Question findQuestion(Long id) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        //Initialize list to get up the empty list to work with
+        //Initialize list to get up the empty list to work with. Only happens on first run through
         if(initList){
             for(int j = 0; j < getAnswersSize();j++){
                 this.answers.add(this.q);
@@ -124,6 +119,7 @@ public class QuestionRepository {
             this.initList = false;
         }
 
+        // Establish database connection and create statement based on language
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
         String stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsICE q JOIN OptionsForAnswersICE o on q.ID = o.QuestionID JOIN OptionsICE o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
@@ -135,11 +131,11 @@ public class QuestionRepository {
             stmt = "SELECT q.id, q.QuestionText, q.OptionCount, o2.OptionText FROM QuestionsPOL q JOIN OptionsForAnswersPOL o on q.ID = o.QuestionID JOIN OptionsPOL o2 on o.OptionID = o2.ID WHERE q.id = " + id.toString();
         Statement prep = conn.createStatement();
         ResultSet r = prep.executeQuery(stmt);
-        int x = 0;
+        int numberOfOptions = 0;
         if(r.next()) {
-            x = r.getInt(3);
+            numberOfOptions = r.getInt(3);
         }
-        String[] options = new String[x];
+        String[] options = new String[numberOfOptions];
         options[0] = r.getString(4);
         Question q = new Question();
         int j = 1;
@@ -154,6 +150,9 @@ public class QuestionRepository {
         return q;
     }
 
+    /**
+     * Fetches the number of questions in the database to limit sizes of lists
+     */
     public int getAnswersSize() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         conn = DriverManager.getConnection(url, username, password);
@@ -172,15 +171,10 @@ public class QuestionRepository {
         return c;
     }
 
+    // Returns the language that has been set
     public String getLanguage(){ return this.language; }
 
+    // Sets the language for the website and questions
     public void setLanguage(String language){ this.language = language; }
-
-    /**
-     * Function processAnswers was/is intended to get the answers
-     * to the right format needed for the database
-     * Incomplete, potentially useless
-     */
-    //void processAnswers(List<Question> answers);
 
 }
