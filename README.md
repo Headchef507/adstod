@@ -1,36 +1,41 @@
-# SpringBootMVC
-Project skeleton for Software Project class in the University of Iceland.
+# Adstod
+Project for group 5 in Software Project class at University of Iceland
 
 ## How do I get this ?
-Your IDE ([IntelliJ](https://www.jetbrains.com/idea/), [Eclipse](https://eclipse.org/), [Spring Tool Suit](https://spring.io/tools)) should be able to clone a project from Github.
-It should be easy to find information regarding how to do that for your chosen IDE.
-It's also possible to download the project as a .zip [here](https://github.com/mbook/SpringBootMVC/archive/master.zip).
+You can clone the project into your chosen IDE (this project was written in IntelliJ) or download it as a .zip
 
 ## How do I run this ?
-This project is setup using [Maven](https://maven.apache.org/what-is-maven.html) as a dependency manager, so if your IDE does not manage that, or you don't have it installed you can look [here](https://maven.apache.org/install.html) for further information.
-When all the dependencies are downloaded, you can run the project by running the ``main()`` method in the class ``Application`` and then enter [localhost:8080](http://localhost:8080) into the address bar of your favorite web browser.
+The process for running this is not quite ideal since the database is locally hosted, written in MySQL. As such, there are several steps for running this.
+
+1. Download and install the program XAMPP: https://www.apachefriends.org/xampp-files/7.2.12/xampp-win32-7.2.12-0-VC15-installer.exe
+  This is what hosts our database locally and is therefore required to run the program.
+2. Open XAMPP and press the Start buttons next to Apache and MySQL
+3. Open a browser and go to localhost/phpmyadmin
+4. In the top row on said page, click "User Accounts"
+5. Near the bottom of the page, click "Add user account"
+6. Fill out the fields with the following information:
+    -Username: kannski
+    -Hostname: (dropdown)Local
+    -Password: Kannski123
+    -Re-type: Kannski123
+    -Global privileges: (Check) Data, (Check) Structure, (Check) Administration
+  Then hit "Go" near the bottom of the page
+7. In the top row on the page, click "Import"
+8. Click the "Choose file" button and find the file named "db.sql" in the repository on your computer
+  Said file is stored in the following path: /adstod/src/main/java/project/Database
+9. Click "Go" near the bottom of the page. This will run the script to create the database, all tables and fill the with data
+
+Once this process has been completed you can run the program in your chosen IDE and go to localhost:8080 to finally get the project running
 
 ## What is going on ?
-Look at the code and find the comments I wrote. I tried explaining what was happening in such a way that it should hopefully be easy to understand. I recommend starting by looking at the [HomeController](https://github.com/danielpall/SpringBootMVC/blob/master/src/main/java/project/controller/HomeController.java#L26).
+Once a language is chosen on the front page, it sets that language into the repository and displays the first question in the chosen language. Currently, there are 2 questions which are conditional on a previous question. If you answer yes to question 4 then you get question 5 but if you answer no then you skip to question 7. Similarly, if you answer yes to question 8, otherwise you skip to question 9.
+There are also different results based on how you answer the questions. Once you finish answering all the questions (currently 16 of them are available but fairly easy to expand by insterting more into the database, no code has to be changed) you will get all results that correspong to your set of answers. If there is no result in out database that corresponds to your set of answers then a default result is displayed which points to a general counsel.
 
 ### What did you use to make this ?
-I used IntelliJ Ultimate with Maven to setup this project. Students and Teachers get the Ultimate edition for free, apply [here](https://www.jetbrains.com/student/).
+This project was coded in IntelliJ, using Java Spring for the most part, JDBC for the database connection and MySQL for the database itself.
 
 ### Database
-This project runs an internal database while it is running. If the project is restarted, then all data will be reset, i.e. no data will persist between restarts.
-If you look at the [application.properties](https://github.com/danielpall/SpringBootMVC/blob/master/src/main/resources/application.properties) file, you can see how you can direct the project to use your own persistent database. The example shown is aimed at Postgres.
-
-## What is this application showing ?  
-This application is a small demonstration of using [Spring Boot](https://projects.spring.io/spring-boot/) to handle the full stack for the webapp. It handles the frontend using Jasper for jsp pages, which 
-allows for dynamic pages. It handles the backend with MVC pattern and easy to use annotations, and interfaces to a repository of our choice, in this instance, an in memory database.
-When the application is running, you can go to [http://localhost:8080/postit](http://localhost:8080/postit) for a demonstration for this tech stack.
-
-It's a simple postit application where an user writes a _name_ and a _note_ and posts it to a list. All users posts will be visible with name and note. 
-
-It's also possible to see notes from certain users by going to the url  [http://localhost:8080/postit/username](http://localhost:8080/postit/username) where _username_ is the name of the user you want to see the postit notes from.
-
-### Where can I find help ?
-In case of any questions, please refer to the "Spring Boot Intro" slides in the HBV501G Verkefni folder on Ugla, or contact your tutor.
+The database is created in MySQL. It's design is using relational ideologies to connect tables together and minimize duplicate data in the database itself.
 
 ### Credits
-This skeleton project was created by Daníel Páll Jóhannsson while tutoring the HBV501G course in Fall 2015 and 2018.
+This project was created by Arnar Þór Sigurðsson (aths18@hi.is), Atli Hólm Lárusson (ahl3@hi.is) and Thomas Samúel Pálsson (tsp3) for the Software Project 1 class at University of Iceland
