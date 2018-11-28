@@ -1,11 +1,8 @@
 package project.service.Implementation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.AssistanceResource;
 import project.persistence.entities.Question;
-import project.persistence.entities.Result;
 import project.persistence.repositories.QuestionRepository;
 import project.service.FetchResultsService;
 

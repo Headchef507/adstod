@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.AssistanceResource;
-import project.persistence.entities.Question;
-import project.persistence.entities.Result;
 import project.service.FetchResultsService;
 
 import java.sql.SQLException;
