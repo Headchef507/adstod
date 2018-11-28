@@ -7,6 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%-- Allows for changing of text depending on language --%>
 <fmt:setLocale value="${Language}"/>
 <fmt:setBundle basename="messages"/>
 

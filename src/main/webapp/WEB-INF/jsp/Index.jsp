@@ -13,6 +13,8 @@
     <body>
         <h1>Adstod</h1>
 
+
+        <%-- Selects the language --%>
         <p>Veldu tungumál/Select a language/Wybierz język</p>
         <ul>
             <li><a href="/Question?lang=ICE">Íslenska</a></li>
