@@ -18,29 +18,18 @@ public class FetchResultsServiceImplementation implements FetchResultsService {
 
     // Instance Variables
     private QuestionRepository repository = QuestionRepository.getInstance();              //to contact the repository
-    private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them
-    private List<AssistanceResource> assistanceResources = new ArrayList<>(); //List of all of the
+    private List<Question> answeredQuestion;            //placeholder for the Questions List to work with them in getResults()
+    private List<AssistanceResource> assistanceResources = new ArrayList<>(); //List of all of the AssistanceResource
 
-
-    //This is the constructor
-    // Dependency Injection
-   /*  @Autowired
-    public FetchResultsServiceImplementation() {
-    } */
-    public List<Question> getAnsweredQuestion() { //doesn´t do anything;
-        return answeredQuestion;
-    }
-
-
-
-    ////This is where we get the object called Result, see the Entity Result for more information.
-    //This is where we receive the AssistanceResources and add theme to the list
-    //the first one is the one that fits the most
+    /*
+    * This is where we receive the AssistanceResources and add theme to the list
+    * the first one is the one that fits the most
+    * If no answers fit the criteria for each Assistance Resource
+    * the default will be chosen.
+    */
     @Override
     public List<AssistanceResource> getResults() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         this.answeredQuestion = repository.getAnswers();
-        long id = 2;
-        AssistanceResource a = repository.getResult(id); //test entity for debugging
 
         //In all following comments above if statements:
         //AR = Assistance Resource
