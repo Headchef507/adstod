@@ -23,7 +23,7 @@
 
     <c:forEach var="counter" begin="0" end="${fn:length(Resources)-1}">
         <p>${Resources.get(counter).getTitle()}</p><br/>
-        <p>${Resources.get(counter).getLink()}</p><br/>
+        <a href="${Resources.get(counter).getLink()}">${Resources.get(counter).getLink()}</a><br/>
         <p>${Resources.get(counter).getDescription()}</p><br/>
     </c:forEach>
 
