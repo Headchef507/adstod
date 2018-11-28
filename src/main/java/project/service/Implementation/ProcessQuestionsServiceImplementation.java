@@ -16,6 +16,7 @@ import java.util.ListIterator;
 public class ProcessQuestionsServiceImplementation implements ProcessQuestionsService {
 
 
+    //Creates an instance of the repository
     private QuestionRepository repository = QuestionRepository.getInstance();
 
     // Finds the initial question to start it all off
@@ -24,8 +25,11 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion((long) 1);
     }
 
-    // Finds the next question after question number id
-    // If it's a jump question it checks whether you answered that
+    /*
+    * Finds the next question after by using it´s id.
+    * If it's a jump question it checks whether you answered yes on that question.
+    * If so it will continue as normal, if not, it will send you next question after that
+    */
     @Override
     public Question findNextQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if (id == 4 || id == 9) {
@@ -39,8 +43,10 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion(id);
     }
 
-    // Finds the previous question to question number id
-    // If it a jump question previously, it checks whether you answered that
+    /*
+    * Finds the previous question to question number id
+    * If the previousQuestion was skipped, it go to the question before that
+    */
     @Override
     public Question findPreviousQuestion(long id) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         if(id==6 || id==11){
@@ -54,35 +60,14 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
         return this.repository.findQuestion(id);
     }
 
-    // Receives the selected answer and stores it in the repository
+    /*
+    * Receives the selected answer from the Question and stores it in the repository
+    */
     @Override
     public void saveAnswers(Question currentQuestion, int answer) {
         currentQuestion.setAnswer(answer);
         this.repository.saveAnswers((int)currentQuestion.getId(),currentQuestion);
     }
-
-    //After the User answers a question, the answer will processed here.
-    //Depending on the id of the question, depends on how it will be processed.
-    //Some questions have only two answer options and others several.
-    //Depending on those, the User will recieve fewer questions.
-    //  @Override
-    //Með nýju pælingunni þá er þetta essentially useless
-    //   public int processAnswers(Question answers) { //breytti frá void yfir í Question svo við skilum til baka næstum spurningu
-    // repository.saveAnswers(answers);
-    //int i = 0; //telur upp hver object
-    // while (i < answers.size()) {
-
-    //     this.question = answers.get(i);
-
-        /*    if (answers.getId() == 3 || question.getId() == 7) {
-                if (answers.getAnswer() == 0)
-                    return (int) (answers.getId() + 1); // gerir ekki rass ennþá, þarf að setja eitt hvað inn.
-                else return (int) answers.getId() + 2;
-            }
-            return (int) answers.getId()+1;*/
-
-    //}
-
 
 
     public int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
