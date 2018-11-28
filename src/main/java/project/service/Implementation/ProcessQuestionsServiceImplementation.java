@@ -70,10 +70,12 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     }
 
 
+    //This returns how many Questions there are in the database
     public int getAnswersSize() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         return this.repository.getAnswersSize();
     }
 
+    //Getters and setter for which language the user requested
     public String getLanguage(){ return this.repository.getLanguage(); }
 
     public void setLanguage(String language){ this.repository.setLanguage(language); }
