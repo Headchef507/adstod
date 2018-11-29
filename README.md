@@ -2,7 +2,7 @@
 Project for group 5 in Software Project class at University of Iceland
 
 ## How do I get this ?
-You can clone the project into your chosen IDE (this project was written in IntelliJ) or download it as a .zip
+You can clone the project repo into your chosen IDE (this project was written in IntelliJ). You can download the project repo as a .zip but there seems to be an issue with the Java Spring dependecies when that is done so you're better off cloning the repo straight from GitHub.
 
 ## How do I run this ?
 The process for running this is not quite ideal since the database is locally hosted, written in MySQL. As such, there are several steps for running this.
