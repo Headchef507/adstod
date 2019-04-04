@@ -3,6 +3,7 @@ package project.service;
 import project.persistence.entities.Question;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface ProcessQuestionsService {
 
@@ -24,4 +25,6 @@ public interface ProcessQuestionsService {
     String getLanguage();
 
     void setLanguage(String language);
+
+    List<Question> getAllQuestions() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException;
 }

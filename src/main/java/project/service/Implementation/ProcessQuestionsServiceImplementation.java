@@ -79,4 +79,11 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     public String getLanguage(){ return this.repository.getLanguage(); }
 
     public void setLanguage(String language){ this.repository.setLanguage(language); }
+
+    // Get all questions with answer sets for Android App
+    public List<Question> getAllQuestions() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        List<Question> allQuestions = null;
+        allQuestions.add(findInitialQuestion());
+        return allQuestions;
+    }
 }
