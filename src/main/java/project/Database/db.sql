@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Creating the Database for use in the project adstod
  * For Group 5
  */
@@ -163,7 +163,7 @@ INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How often have you
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to mental or physical abuse by your current spouse?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to mental or physical abuse by a coworker/s in the last 2 months?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you been subjected to severe mental or physical abuse by a parent, sibling or other family member in the last 2 months?", 2);
-INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you used drugs (heroin or strong pain meidcation, kannabis, amfetamin, cocaine, mushrooms or other comparable substances) in the last 2 months?", 2);
+INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Have you used drugs (heroin or strong pain medication, kannabis, amfetamin, cocaine, mushrooms or other comparable substances) in the last 2 months?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How often have you used drugs in the last month", 6);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Do you feel oppressed in the community due to your origin?", 2);
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("Has anyone close to you died in the last 2 months?", 2);
@@ -173,22 +173,22 @@ INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the 
 INSERT INTO QuestionsENG (QuestionText, OptionCount) VALUES ("How well does the following statement apply to you: 'I have felt unhappy in one or more of my relationships in the last 2 months'?", 5);
 
 -- Inserting questions in polish
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER1?", 3); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER2?", 5); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER3?", 3); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER4?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER5?", 5); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER6?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER7?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER8?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER9?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER10?", 6); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER11?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER12?", 2); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER13?", 5); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER14?", 5); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER15?", 5); -- Polish translation needed
-INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("PLACEHOLDER16?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Jaka jest twoja plec?", 3); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Jaki jest twoj wiek?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Jaki jest twij status zwiazkowy?", 3); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Czy uzywales/as kiedy alkoholu?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("W ubieglym miesiacu, jak czesto uzywales/uzywalas alkohol?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Czy cierpiałeś/as na fizycznym lub psychincznym znęcaniu się przez współmałżonka?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Czy cierpiales/as na fizycznym lub psychincznym znecaniu sie przez partnera w pracy w ostnich dwoch miesiacach (na przykład zastraszanie w miejscu pracy, nacisk grupy na coś, co potem zalowales/as)?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Czy cierpiales/as fizycznie lub psychicznie przez rodzicow, rodzenstwo albo kogos z rodziny?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Czy spożywałeś/as narkotyki (heroinę i silne środki przeciwbólowe, kannabis( hass albo marihuanę) amfetaminy, kokainę, grzyby lub podobne substancje) ?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Jak czesto spozywlaes/as narkotyki przed ostatni miesiac?", 6); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Odczuwasz wyroznienie w spoleczenstwie przez swoje pochodzenie?", 2); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES (" Czy ktos bliksi ciebie zmarl w ciagu ostatnich 2 miesiecy?", 2);
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Ktore okreslnie najbardziej pasuje do Ciebie: Czułem smutek w ciągu ostatnich 2 miesięcy?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Ktore okreslnie najbardziej pasuje do Ciebie: Myślałem o samobjostwu w ciągu ostatnich 2 miesięcy?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Ktore okreslnie najbardziej pasuje do Ciebie: Czułem samotność w ciągu ostatnich 2 miesięcy?", 5); -- Polish translation needed
+INSERT INTO QuestionsPOL (QuestionText, OptionCount) VALUES ("Ktore okreslnie najbardziej pasuje do Ciebie: Czułem niezadowolenie z jednego lub więcej moich związków w ciągu ostatnich 3 miesięcy?", 5); -- Polish translation needed
 
 -- Inserting all options for all questions in icelandic
 INSERT INTO OptionsICE (OptionText) VALUES ("Karlkyns");
@@ -252,34 +252,34 @@ INSERT INTO OptionsENG (OptionText) VALUES ("Highly disagree");
 
 -- Inserting all options for all questions in polish
 -- Translation needed
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHMale");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHFemale");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHOther");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Mezczyzna");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Kobieta");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Inne");
 INSERT INTO OptionsPOL (OptionText) VALUES ("< 18");
 INSERT INTO OptionsPOL (OptionText) VALUES ("18 - 35");
 INSERT INTO OptionsPOL (OptionText) VALUES ("35 - 50");
 INSERT INTO OptionsPOL (OptionText) VALUES ("50 - 67");
 INSERT INTO OptionsPOL (OptionText) VALUES ("> 67");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinhleypur");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHSambúð");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHKvænt/ur");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHJá");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHNei");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEkkert");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinu sinni til tvisvar");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHÞrisvar til fjórum sinnum");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHFjórum til sjö sinnum");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHOftar en átta sinnum");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinu sinni til þrisvar á mánuði");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinu sinni á tveggja vikna fresti");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHEinu sinni til þrisvar í viku");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHNæstum alla daga");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHAlla daga");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHMjög sammála");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHFrekar sammála");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Samotny");
+INSERT INTO OptionsPOL (OptionText) VALUES ("W zwiazku");
+INSERT INTO OptionsPOL (OptionText) VALUES ("zonata/zonaty");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Tak");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Nie");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Wogule");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raz do dwoch razy");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Trzy do czterech razy");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Cztery do siedem razy");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Wiecej niz osiem razy");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raz do trzech razy w miesiacu");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raz w ciagu dwoch tygnodi");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raz do trzech razy w tygodniu");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Prawie codziennie");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Codziennie");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Bardzo się zgadzam");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raczej się zgadzam");
 INSERT INTO OptionsPOL (OptionText) VALUES ("PHHvorki né");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHFrekar ósammála");
-INSERT INTO OptionsPOL (OptionText) VALUES ("PHMjög ósammála");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Raczej się nie zgadzaj");
+INSERT INTO OptionsPOL (OptionText) VALUES ("Bardzo się nie zgadzam");
 
 -- Connecting the questions to options and the next questionText in line - Icelandic
 INSERT INTO OptionsForAnswersICE (QuestionID, OptionID, NextQuestionID) VALUES (1, 1, 2);
