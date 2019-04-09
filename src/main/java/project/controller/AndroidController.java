@@ -18,15 +18,17 @@ import org.json.JSONObject;
 public class AndroidController {
     private ProcessQuestionsService processQuestionsService;
     private HttpServletRequest request;
+    private JSONObject JSONallQ;
 
     @RequestMapping(value = "/allquestions")
-    public List<Question> getQuestions(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+    public JSONObject getQuestions(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException, JSONException {
         // Set selected language
         String language = request.getParameter(("lang"));
         request.getSession().setAttribute("Language", language);
         this.processQuestionsService.setLanguage(language);
         List<Question> allQ = processQuestionsService.getAllQuestions();
-        return allQ;
+        JSONallQ = JSONQuestion(allQ);
+        return JSONallQ;
         // Put together the list of all questions
 
         // Following is code from SessionController, for reference while coding
