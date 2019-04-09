@@ -1,5 +1,6 @@
 package project.controller;
 
+import org.json.JSONException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,10 +11,13 @@ import project.service.ProcessQuestionsService;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.json.JSONObject;
 
 @RestController
 public class AndroidController {
     private ProcessQuestionsService processQuestionsService;
+    private HttpServletRequest request;
 
     @RequestMapping(value = "/allquestions")
     public List<Question> getQuestions(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException {
@@ -41,5 +45,13 @@ public class AndroidController {
 
         // Return the view
         return "/Question";*/
+
+
     }
+    public JSONObject JSONQuestion(List<Question> qs) throws JSONException {
+        JSONObject appQuestions = new JSONObject();
+        appQuestions.put("forApp", qs);
+        return appQuestions;
+    }
+
 }

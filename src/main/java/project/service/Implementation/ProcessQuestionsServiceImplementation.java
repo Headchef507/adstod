@@ -21,6 +21,17 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
 
     // Finds the initial question to start it all off
     @Override
+    public List<Question> getAllQuestions() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        List<Question> appQuestions = null;
+        int i = 0;
+        while(i < 16) {
+            appQuestions.set(i, this.repository.findQuestion((long) i));
+        }
+
+        return appQuestions;
+    }
+
+    @Override
     public Question findInitialQuestion() throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         return this.repository.findQuestion((long) 1);
     }
@@ -81,9 +92,9 @@ public class ProcessQuestionsServiceImplementation implements ProcessQuestionsSe
     public void setLanguage(String language){ this.repository.setLanguage(language); }
 
     // Get all questions with answer sets for Android App
-    public List<Question> getAllQuestions() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    /*public List<Question> getAllQuestions() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         List<Question> allQuestions = null;
         allQuestions.add(findInitialQuestion());
         return allQuestions;
-    }
+    } */
 }
