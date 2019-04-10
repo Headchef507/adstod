@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.HttpURLConnection;
+
 import org.json.JSONObject;
 
 @RestController
@@ -23,6 +26,8 @@ public class AndroidController {
     @RequestMapping(value = "/allquestions")
     public JSONObject getQuestions(Model model, HttpServletRequest request) throws SQLException, IllegalAccessException, ClassNotFoundException, InstantiationException, JSONException {
         // Set selected language
+        
+
         String language = request.getParameter(("lang"));
         request.getSession().setAttribute("Language", language);
         this.processQuestionsService.setLanguage(language);
@@ -50,6 +55,33 @@ public class AndroidController {
 
 
     }
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) { /*report an error*/ }
+
+        try {
+            JSONObject jsonObject =  HTTP.toJSONObject(jb.toString());
+        } catch (JSONException e) {
+            // crash and burn
+            throw new IOException("Error parsing JSON request string");
+        }
+
+        // Work with the data using methods like...
+        // int someInt = jsonObject.getInt("intParamName");
+        // String someString = jsonObject.getString("stringParamName");
+        // JSONObject nestedObj = jsonObject.getJSONObject("nestedObjName");
+        // JSONArray arr = jsonObject.getJSONArray("arrayParamName");
+        // etc...
+    }
+
+
+
     public JSONObject JSONQuestion(List<Question> qs) throws JSONException {
         JSONObject appQuestions = new JSONObject();
         appQuestions.put("forApp", qs);
